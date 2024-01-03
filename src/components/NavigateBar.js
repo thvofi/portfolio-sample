@@ -15,42 +15,42 @@ export default function NavigateBar({onButtonClick, section}){
             {of_sections.includes(section) && (
             <nav className="nav">
                 <img src="./assets/0nitFans_Logo.png" className="nav-logo" alt=""/>
-                <NavButton img="/assets/svg/home.svg" 
+                <NavButton img="./assets/svg/home.svg" 
                 text="Home" 
                 section="home" onButtonClick={onButtonClick}/>
-                <NavButton img="/assets/svg/notifications.svg" 
+                <NavButton img="./assets/svg/notifications.svg" 
                 text="Notifications" 
                 section="notifications" onButtonClick={onButtonClick}/>
-                <NavButton img="/assets/svg/messages.svg" 
+                <NavButton img="./assets/svg/messages.svg" 
                 text="Messages" 
                 section="messages" onButtonClick={onButtonClick}/>
-                <NavButton img="/assets/svg/user.svg" 
+                <NavButton img="./assets/svg/user.svg" 
                 text="My profile" 
                 section="profile" onButtonClick={onButtonClick}/>
 
-                <button className="projects" onClick={() => onButtonClick('df-home')}><img src="/assets/DF.png" className="project-icon" alt=""/> <span className="nav-text">Digital Fabrication</span></button>
+                <button className="projects" onClick={() => onButtonClick('df-home')}><img src="./assets/DF.png" className="project-icon" alt=""/> <span className="nav-text">Digital Fabrication</span></button>
             </nav>
             )}
 
             {df_sections.includes(section) && (
             <nav className="nav">
-                <img src="/assets/DigiFab.png" className="nav-logo" alt=""/>
-                <NavButton img="/assets/svg/home.svg" 
+                <img src="./assets/DigiFab.png" className="nav-logo" alt=""/>
+                <NavButton img="./assets/svg/home.svg" 
                 text="Home" 
                 section="df-home" onButtonClick={onButtonClick}/>
                 
-                <DropdownButton img="/assets/svg/assignments.svg" 
+                <DropdownButton img="./assets/svg/assignments.svg" 
                 text="Assignments" 
                 headlines={dfa_headlines} sections={dfa_sections} onButtonClick={onButtonClick}/>
 
-                <NavButton img="/assets/svg/hammer.svg" 
+                <NavButton img="./assets/svg/hammer.svg" 
                 text="Final project" 
                 section="df-final" onButtonClick={onButtonClick}/>
-                <NavButton img="/assets/svg/user.svg" 
+                <NavButton img="./assets/svg/user.svg" 
                 text="About me" 
                 section="df-profile" onButtonClick={onButtonClick}/>
 
-                <button className="projects" onClick={() => onButtonClick('home')}><img src="/assets/0nitFans_icon.png" className="project-icon" alt=""/> <span className="nav-text">0nitFans</span></button>
+                <button className="projects" onClick={() => onButtonClick('home')}><img src="./assets/0nitFans_icon.png" className="project-icon" alt=""/> <span className="nav-text">0nitFans</span></button>
             </nav>
             )}
 

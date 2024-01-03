@@ -8,14 +8,14 @@ export default function Content({section}){
             <div className="hero">
                 <div className="profile">
                     <div className="avatar">
-                        <img src="/assets/brand.png" className="back" alt="avatar-back"/>
-                        <img src="/assets/avatar.png" className="front" alt="avatar-front"/>
+                        <img src="./assets/brand.png" className="back" alt="avatar-back"/>
+                        <img src="./assets/avatar.png" className="front" alt="avatar-front"/>
                     </div>
                     
-                    <img src="/assets/wall.png" className="wallpaper" alt="wallpaper"/>
+                    <img src="./assets/wall.png" className="wallpaper" alt="wallpaper"/>
 
                     <div className="profile-stats">
-                        <span className="profile-header">Thanh Vo<img src="/assets/svg/verify.svg" className="verified" alt="verified"/></span>
+                        <span className="profile-header">Thanh Vo<img src="./assets/svg/verify.svg" className="verified" alt="verified"/></span>
                         <span className="profile-account">@0nit</span>
                     </div>
 
@@ -48,14 +48,14 @@ export default function Content({section}){
             <div className="hero">
                 <div className="profile">
                     <div className="avatar">
-                        <img src="/assets/brand.png" className="front" alt="avatar-front"/>
-                        <img src="/assets/avatar.png" className="back" alt="avatar-back"/>
+                        <img src="./assets/brand.png" className="front" alt="avatar-front"/>
+                        <img src="./assets/avatar.png" className="back" alt="avatar-back"/>
                     </div>
                     
-                    <img src="/assets/wall.png" className="wallpaper" alt="wallpaper"/>
+                    <img src="./assets/wall.png" className="wallpaper" alt="wallpaper"/>
 
                     <div className="profile-stats">
-                        <span className="profile-header">Thanh Vo<img src="/assets/svg/verify.svg" className="verified" alt="verified"/></span>
+                        <span className="profile-header">Thanh Vo<img src="./assets/svg/verify.svg" className="verified" alt="verified"/></span>
                         <span className="profile-account">@0nit</span>
                     </div>
 
