@@ -1,0 +1,81 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 16px;
+    z-index: 1000;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    width: 280px;
+    height: auto;
+    padding: 16px 8px;
+
+    align-content: flex-start;
+    align-items: flex-start;
+
+    height: auto;
+    margin-left: auto;
+
+    transition: opacity 0.5s ease;
+}
+
+.nav-logo {
+    pointer-events: none;
+    height: 50px;
+    margin-bottom: 8px;
+}
+
+.nav button{
+    width: 240px;
+    height: 48px;
+    align-items: center;
+
+    display: inline-flex;
+    justify-content: flex-start;
+    flex-basis: 240px;
+    padding: 10px;
+    margin-bottom: 8px;
+    
+    border: none;
+    background: none;
+    color: #8a96a3;
+    font-weight: 500;
+    border-radius: 1000px;
+    transition: opacity .15s;
+}
+
+.nav button:hover {
+    background-color: #f0f9fe;
+    color: #0091ea;
+}
+
+.nav-icon {
+    pointer-events: none;
+    width: 30px;
+    filter: invert(63%) sepia(15%) saturate(289%) hue-rotate(170deg) brightness(91%) contrast(92%);
+}
+
+button.projects {
+    background: linear-gradient(-60deg, #00aff0, #ffffff);
+    color: #ffffff;
+}
+button.projects:hover {
+    background: linear-gradient(-60deg, #0091ea, #ffffff);
+    color: #ffffff;
+}
+
+.project-icon {
+    width: 30px;
+}
+
+.nav-text {
+    margin-left: 21px;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.nav button:hover .nav-icon {
+    filter: invert(40%) sepia(95%) saturate(2899%) hue-rotate(180deg) brightness(98%) contrast(103%);
+}

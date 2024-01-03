@@ -1,0 +1,9 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.page-container {
+    display: flex;
+    margin: 0 auto;
+    padding: 0 16px;
+}

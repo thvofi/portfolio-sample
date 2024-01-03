@@ -1,0 +1,50 @@
+.right-bar {
+    position: fixed;
+    top: 0;
+    right: 16px;
+    z-index: 1000;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    width: 370px;
+    height: auto;
+    padding: 16px 8px;
+
+    align-content: flex-start;
+    align-items: flex-start;
+
+    height: auto;
+}
+.socials button{
+    width: 340px;
+    height: 44px;
+    align-items: center;
+
+    display: inline-flex;
+    justify-content: center;
+    flex-basis: 240px;
+    padding: 10px;
+    margin-bottom: 8px;
+    
+    border: none;
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 1000px;
+    transition: opacity .15s, background-color .15s ease;
+}
+.socials button:hover {
+    background-color: #0091ea;
+}
+.socials-icon {
+    pointer-events: none;
+    width: 20px;
+    filter: invert(100%)
+}
+.socials-text {
+    flex: 1;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
