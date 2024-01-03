@@ -1,17 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React, {useState} from "react"
+import ReactDOM from "react-dom"
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import NavigateBar from "./components/NavigateBar"
+import Content from "./components/Content"
+import Footer from "./components/Footer"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+function Page(){
+    const [currentSection, setCurrentSection] = useState('home');
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    const handleButtonClick = (section) => {
+        setCurrentSection(section);
+    };
+
+
+    return(
+        <div className="page-container">
+            <NavigateBar onButtonClick={handleButtonClick} section={currentSection}/>
+            <Content section={currentSection}/>
+            <Footer section={currentSection}/>
+        </div>
+    )
+}
+
+ReactDOM.render(<Page />, document.getElementById("root"))
