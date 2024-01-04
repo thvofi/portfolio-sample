@@ -8,9 +8,8 @@ export default function DropdownButton(props) {
     };
 
     const handleHeadlineClick = (headline, index) => {
-        const section = props.sections[index];
-        props.onButtonClick(section);
-    
+        const currentSection = props.sections[index];
+        props.handleButtonClick(currentSection);
         setShowDropdown(false);
     };
 

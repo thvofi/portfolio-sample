@@ -1,10 +1,18 @@
-import React from "react"
+import React, {useState} from "react"
 import './content.css';
+import DFab from "./DFab";
+import { useSection } from './SectionContext';
 
-export default function Content({section}){
+export default function Content(){
+    const { currentSection } = useSection();
+    const of_sections = ["home", "notifications", "messages", "profile"];
+    const df_sections = ["df-home", "df-profile", "df-final"];
+
+    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14"];
+
     return(
         <div className="content">
-            {(section === 'home') && (
+            {(currentSection === 'home') && (
             <div className="hero">
                 <div className="profile">
                     <div className="avatar">
@@ -27,7 +35,7 @@ export default function Content({section}){
                 </div>
 
                 <div className="subcribe">
-                    <button  onClick={() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", '_blank')}>LEARN MORE</button>
+                    <button onClick={() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", '_blank')}>LEARN MORE</button>
                 </div>
 
                 <div className="posts">
@@ -36,15 +44,15 @@ export default function Content({section}){
             </div>
             )}
 
-            {section === 'notifications' && (
+            {currentSection === 'notifications' && (
             <p>Updates and todos</p>
             )}
 
-            {section === 'messages' && (
+            {currentSection === 'messages' && (
             <p>Contacts/email basically</p>
             )}
 
-            {section === 'profile' && (
+            {currentSection === 'profile' && (
             <div className="hero">
                 <div className="profile">
                     <div className="avatar">
@@ -67,13 +75,20 @@ export default function Content({section}){
                 </div>
 
                 <div className="subcribe">
-                    <button>RESUME</button>
+                    <button onClick={() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", '_blank')}>RESUME</button>
                 </div>
 
                 <div className="posts">
-                    
+                    <p>Will be updated</p>
                 </div>
             </div>
+            )}
+
+
+            {(df_sections.includes(currentSection) || dfa_sections.includes(currentSection)) && (
+                <div className="hero">
+                    <DFab currentSection={currentSection}/>
+                </div>
             )}
 
             

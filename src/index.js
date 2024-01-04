@@ -4,21 +4,18 @@ import './index.css';
 import NavigateBar from "./components/NavigateBar"
 import Content from "./components/Content"
 import Footer from "./components/Footer"
+import { SectionProvider } from "./components/SectionContext";
 
 function Page(){
-    const [currentSection, setCurrentSection] = useState('home');
-
-    const handleButtonClick = (section) => {
-        setCurrentSection(section);
-    };
-
 
     return(
-        <div className="page-container">
-            <NavigateBar onButtonClick={handleButtonClick} section={currentSection}/>
-            <Content section={currentSection}/>
-            <Footer section={currentSection}/>
-        </div>
+        <SectionProvider>
+            <div className="page-container">
+                <NavigateBar />
+                <Content />
+                <Footer />
+            </div>
+        </SectionProvider>
     )
 }
 

@@ -10,6 +10,7 @@
 }
 
 .hero {
+    max-width: 600px;
     margin-top: 0px;
     display: flex;
     flex-direction: column;
@@ -128,4 +129,53 @@
 }
 .subcribe button:hover {
     background-color: #0091ea;
+}
+
+.posts {
+    position: relative;
+    top: 230px;
+}
+
+/*code segment*/
+code {
+    max-width: 560px;
+    text-align: left;
+    font-family: 'Courier New', monospace;
+    background-color: #f4f4f4;
+    padding: 0.5em;
+    display: block;
+    overflow-x: auto;
+    margin: 0;
+}
+
+.df-docs {
+    margin-bottom: 20px;
+}
+
+.df-thumb {
+    width: 180px;
+}
+
+.df-docs h2 {
+    text-align: left;
+    margin: 20 20px;
+}
+
+.df-docs p {
+    text-align: left;
+    margin: 0 20px;
+    line-height: 24px;
+}
+
+.df-docs a,li {
+    text-align: left;
+}
+
+.df-img {
+    width: 560px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.df-img:hover {
+    transform: scale(1.5);
 }

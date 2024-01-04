@@ -48,3 +48,9 @@
     font-size: 14px;
     font-weight: 500;
 }
+
+.df-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
