@@ -12,8 +12,11 @@ function Page(){
         <SectionProvider>
             <div className="page-container">
                 <NavigateBar />
-                <Content />
-                <Footer />
+                <div className="right-side">
+                    <Content />
+                    <Footer />
+                </div>
+                
             </div>
         </SectionProvider>
     )

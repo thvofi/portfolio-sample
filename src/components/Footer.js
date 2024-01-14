@@ -49,7 +49,9 @@ export default function Footer({section}){
 
                 <div className="df-links">
                     <header>Useful links</header>
-                    <a href="https://fabacademy.org/2024/">FabAcademy</a>
+                    <a href="https://aalto.zoom.us/j/69025769608?pwd=ZW5WbHYrbk80S2FCbyt1RGhZZGVSQT09">Local Zoom</a>
+                    <a href="https://fabacademy.org/2024/video.html">Global Zoom</a>
+                    <a href="https://fabacademy.org/2024/">FabAcademy 2024</a>
                     <a href="https://pub.fabcloud.io/tutorials/index.html">FabAcademy - Tutorials</a>
                     <a href="https://www.youtube.com/@aaltofablab3504/videos">Aalto Fablab Youtube</a>
                     <a href="https://vimeo.com/academany">FabAcademy Vimeo</a>

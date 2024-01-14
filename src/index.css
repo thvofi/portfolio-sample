@@ -1,9 +1,58 @@
-body {
+html, body {
     font-family: 'Roboto', sans-serif;
+    height: 100%;
+    margin: 0;
 }
 
 .page-container {
     display: flex;
     margin: 0 auto;
-    padding: 0 16px;
+    min-height: 100vh;
+    flex-direction: row;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+@media (max-width: 683px) {
+    .right-side {
+        margin: 0 auto;
+    }
+}
+@media (min-width: 682px) {
+    .right-side {
+        margin-left: 80px;
+    }
+}
+@media (min-width: 764px) {
+    .right-side {
+        margin: 0 auto;
+    }
+}
+@media (min-width: 1052px) {
+    .right-side {
+        margin-left: 80px;
+    }
+}
+
+@media (min-width: 1250px) {
+    .right-side {
+        margin-left: 280px;
+    }
+}
+@media (min-width: 1346px) {
+    .right-side {
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1400px) {
+    .right-side {
+        display: flex;
+        margin: 0 auto;
+        flex-direction: row;
+        align-items: flex-start;
+    }
 }

@@ -1,21 +1,5 @@
 .right-bar {
-    position: fixed;
-    top: 0;
-    right: 16px;
-    z-index: 1000;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     
-    width: 370px;
-    height: auto;
-    padding: 16px 8px;
-
-    align-content: flex-start;
-    align-items: flex-start;
-
-    height: auto;
 }
 .socials button{
     width: 340px;
@@ -54,3 +38,71 @@
     flex-direction: column;
     align-items: center;
 }
+@media (max-width: 1053px) {
+    .right-bar {
+        display: none;
+    }
+}
+@media (min-width: 1052px) {
+    .right-bar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+    
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        
+        width: 370px;
+        height: auto;
+        padding: 16px 0px;
+    
+        align-content: flex-start;
+        align-items: flex-start;
+    
+    }
+}
+@media (min-width: 1346px) {
+    .right-bar {
+        position: fixed;
+        top: 0;
+        right: 0px;
+        z-index: 1000;
+    
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        
+        width: 370px;
+        height: auto;
+        padding: 16px 0px;
+    
+        align-content: flex-start;
+        align-items: flex-start;
+    
+        margin-right: calc(50% - 672px);
+    }
+}
+@media (min-width: 1400px) {
+    .right-bar {
+        position: fixed;
+        top: 0;
+        right: 0px;
+        z-index: 1000;
+    
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        
+        width: 370px;
+        height: auto;
+        padding: 16px 0px;
+    
+        align-content: flex-start;
+        align-items: flex-start;
+    
+        margin-right: calc(50% - 700px);
+    }
+}
+

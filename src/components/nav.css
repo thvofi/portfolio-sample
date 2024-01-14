@@ -1,23 +1,12 @@
 .nav {
     position: fixed;
-    top: 0;
-    left: 16px;
     z-index: 1000;
-
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    
-    width: 280px;
-    height: auto;
-    padding: 16px 8px;
 
     align-content: flex-start;
     align-items: flex-start;
-
-    height: auto;
-    margin-left: auto;
-
     transition: opacity 0.5s ease;
 }
 
@@ -28,22 +17,15 @@
 }
 
 .nav button{
-    width: 240px;
-    height: 48px;
-    align-items: center;
-
-    display: inline-flex;
-    justify-content: flex-start;
-    flex-basis: 240px;
-    padding: 10px;
-    margin-bottom: 8px;
-    
     border: none;
     background: none;
     color: #8a96a3;
     font-weight: 500;
     border-radius: 1000px;
     transition: opacity .15s;
+    padding: 10px;
+    margin-bottom: 8px;
+    display: inline-flex;
 }
 
 .nav button:hover {
@@ -55,15 +37,6 @@
     pointer-events: none;
     width: 30px;
     filter: invert(63%) sepia(15%) saturate(289%) hue-rotate(170deg) brightness(91%) contrast(92%);
-}
-
-button.projects {
-    background: linear-gradient(-60deg, #00aff0, #ffffff);
-    color: #ffffff;
-}
-button.projects:hover {
-    background: linear-gradient(-60deg, #0091ea, #ffffff);
-    color: #ffffff;
 }
 
 .project-icon {
@@ -79,3 +52,157 @@ button.projects:hover {
 .nav button:hover .nav-icon {
     filter: invert(40%) sepia(95%) saturate(2899%) hue-rotate(180deg) brightness(98%) contrast(103%);
 }
+@media (max-width: 683px) {
+    .nav {
+        display: none;
+    }
+    .nav-logo {
+        display: none;
+    }
+    .nav-logo-thumb {
+        display: none;
+    }
+
+    .nav button{
+        width: 48px;
+        height: 48px;
+        align-items: center;
+        justify-content:center;
+    }
+    .nav-text {
+        display: none;
+    }
+}
+@media (min-width: 682px) {
+    .nav {
+        top: 0;
+        width: 80px;
+        height: auto;
+        padding: 16px 0px;
+        margin-left: 0px;
+    }
+    .nav-logo {
+        display: none;
+    }
+    .nav-logo-thumb {
+        pointer-events: flex;
+        width: 50px;
+        margin-bottom: 8px;
+    }
+
+    .nav button{
+        width: 48px;
+        height: 48px;
+        align-items: center;
+        justify-content:center;
+    }
+    .nav-text {
+        display: none;
+    }
+}
+@media (min-width: 764px) {
+    .nav {
+        width: 80px;
+        height: auto;
+        padding: 16px 0px;
+        margin-left: calc(50% - 382px);
+    }
+    .nav-logo {
+        display: none;
+    }
+    .nav-logo-thumb {
+        pointer-events: flex;
+        width: 50px;
+        margin-bottom: 8px;
+    }
+
+    .nav button{
+        width: 48px;
+        height: 48px;
+        align-items: center;
+        justify-content:center;
+    }
+    .nav-text {
+        display: none;
+    }
+}
+
+@media (min-width: 1052px) {
+    .nav {
+        width: 80px;
+        height: auto;
+        padding: 16px 0px;
+        margin-left: 0px;
+    }
+    .nav-logo {
+        display: none;
+    }
+    .nav-logo-thumb {
+        pointer-events: flex;
+        width: 50px;
+        margin-bottom: 8px;
+    }
+    .nav-text {
+        display: none;
+    }
+    .nav button{
+        width: 48px;
+        height: 48px;
+        align-items: center;
+        justify-content:center;
+    }
+}
+
+@media (min-width: 1250px) {
+    .nav {
+        width: 280px;
+        height: auto;
+        padding: 16px 0px;
+        margin-left: 0px;
+    }
+    .nav-logo {
+        display: flex;
+    }
+    .nav-logo-thumb {
+        display: none;
+    }
+    .nav-text {
+        display: flex;
+    }
+    .nav button{
+        width: 240px;
+        height: 48px;
+        align-items: center;
+        justify-content: flex-start;
+        flex-basis: 240px;
+    }
+    button.projects {
+        background: linear-gradient(-60deg, #00aff0, #ffffff);
+        color: #ffffff;
+    }
+    button.projects:hover {
+        background: linear-gradient(-60deg, #0091ea, #ffffff);
+        color: #ffffff;
+    }
+}
+@media (min-width: 1346px) {
+    .nav {        
+        width: 280px;
+        height: auto;
+        padding: 16px 0px;
+        margin-left: calc(50% - 582px);
+    }
+
+}
+
+@media (min-width: 1400px) {
+    .nav {
+        width: 280px;
+        height: auto;
+        padding: 16px 0px;
+        margin-left: calc(50% - 616px);
+    }
+}
+
+
+

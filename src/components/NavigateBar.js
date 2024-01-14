@@ -17,6 +17,7 @@ export default function NavigateBar(){
         <header>
             {of_sections.includes(currentSection) && (
             <nav className="nav">
+                <img src="./assets/thumb.png" className="nav-logo-thumb" alt=""/>
                 <img src="./assets/0nitFans_Logo.png" className="nav-logo" alt=""/>
                 <NavButton img="./assets/svg/home.svg" 
                 text="Home" 
@@ -37,6 +38,7 @@ export default function NavigateBar(){
 
             {(df_sections.includes(currentSection) || dfa_sections.includes(currentSection)) && (
             <nav className="nav">
+                <img src="./assets/thumb_df.png" className="nav-logo-thumb" alt=""/>
                 <img src="./assets/DigiFab.png" className="nav-logo" alt=""/>
                 <NavButton img="./assets/svg/home.svg" 
                 text="Home" 

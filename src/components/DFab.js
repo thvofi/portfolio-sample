@@ -7,6 +7,7 @@ export default function DFab({currentSection}){
             {(currentSection === 'df-home') && (
                 <div className="profile">
                     <h1>Home</h1>
+                    <img src="./assets/df/home.png" className="df-thumb"/>
                     <h2>Hi! I'm Thanh Vo and this is my Digital Fabrication documentation page.</h2>
                     <span>Insert project grid here</span>
                 </div>
@@ -38,9 +39,9 @@ export default function DFab({currentSection}){
                     </div>
 
                     <p className="forewords">
-                        I'm a Digital Systems and Design student at Aalto University, minor (soon be major) in Acoustics, also a professional procrastinator and a free time guitar player.<br/>
+                        I'm a Digital Systems and Design student at Aalto University, minor in Acoustics, also a professional procrastinator and a free time guitar player.<br/>
                         I enjoy working with electronics and digital tools, no matter the complexity. I learned little skills that are too mediocre to include and until 
-                        impostor syndrome kicks in, I'm feeling good.
+                        impostor syndrome kicks in, I'm feeling okay.
                     </p>
 
                 </div>
@@ -127,7 +128,7 @@ export default function DFab({currentSection}){
                             <li>start/initiate: <code>git init</code></li>
                             <li>check files, changes: <code>git status</code></li>
                             <li>add all changes to precommit: <code>git add .</code></li>
-                            <li>commit & changelog: <code>git commit -m"changelog here"</code></li>
+                            <li>commit & changelog: <code>git commit -m "changelog here"</code></li>
                             <li>push to repo: <code>git push</code></li>
                         </ul>
                         There is also git pull to pull/update local repo and surely occationally you want to switch branches or jump from GitHub to GitLab, but I'm sure there're more in-depth guides available online. 
@@ -148,7 +149,7 @@ export default function DFab({currentSection}){
                     <ul>
                         <li><a href="https://react.dev/learn">React</a></li>
                         <li><a href="https://create-react-app.dev/docs/deployment/">React deployment guide</a></li>
-                        <li><a href="https://www.youtube.com/watch?v=bMknfKXIFA8">React course</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=bMknfKXIFA8">React crash course</a></li>
 
                     </ul>
                 </div>
@@ -179,7 +180,7 @@ export default function DFab({currentSection}){
             {(currentSection === 'week6') && (
                 <div className="profile">
                     <h1>Embedded Programming</h1>
-                    <img src="./assets/df/6/thumb.jpg" className="df-thumb"/>
+                    <img src="./assets/df/6/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
 
                 </div>
