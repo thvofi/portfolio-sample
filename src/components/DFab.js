@@ -1,6 +1,7 @@
 import React from "react"
 import DFHomeButton from "./props/DFHomeButton";
 import { useSection } from './SectionContext';
+import DFimg from "./props/DFimg";
 
 export default function DFab({currentSection}){
     const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14"];
@@ -44,7 +45,11 @@ export default function DFab({currentSection}){
                     <h2>Multi-fx digital guitar pedal</h2>
 
                     <h3>Plan</h3>
-
+                    <p>
+                        To have a functional live pedal that provide the <u>platform</u> for me to learn, develope, deploy guitar effects processing. It's been on my mind as a cooler Zoom
+                        MS-50G as I quite like its experience design but a month ago, Zoom released an upgraded stompbox (after 11 years) called MS-50G+, so it'll be interesting to learn from them.
+                        <img src="./assets/df/final/img0.png" className="df-img"/>
+                    </p>
                     <h3>Stage 1: Hardware rabit holes</h3>
                     <p>
                         I have some surface level ideas for what's coming next, but not enough to form a concrete plan, the purpose of this stage is to research.<br/>
@@ -71,13 +76,22 @@ export default function DFab({currentSection}){
                     </p>
                     <h4>Raspberry Pi</h4>
                     <p>
-                        
+                        <ul>
+                            <li><a href="https://www.electrosmash.com/pedal-pi">Electrosmash's Pedal Pi</a></li>
+                            <li><a href="https://github.com/GuitarML/NeuralPi">GuitarML's Neural Pi</a></li>
+                            <li><a href="https://blokas.io/modep/">MODEP</a></li>
+                        </ul>
                     </p>
-                    <h4>Electro-smith Daisy Seed</h4>
-
+                    <h4>Electrosmith Daisy Seed</h4>
+                    <p>
+                        <ul>
+                            <li><a href="https://github.com/bkshepherd/DaisySeedProjects">bkshepherd's DS Pedals</a></li>   
+                            <li><a href="https://github.com/GuitarML/DaisySeedProjects/releases/tag/v1.1">GuitarML's Modules</a></li>
+                        </ul>
+                    </p>
                     <h4>Others</h4>
 
-                    <h3>Stage 2: Breadboard/EE</h3>
+                    <h3>Stage 2: </h3>
 
                     <h2>Side projects that benefit from assignments</h2>
 
@@ -100,10 +114,13 @@ export default function DFab({currentSection}){
 
                     <p className="forewords">
                         I'm a Digital Systems and Design student at Aalto University, minor in Acoustics, professional procrastinator and free time guitar player.<br/>
-                        I enjoy working with electronics and digital tools, no matter the complexity. I learned little skills at mediocre level that I can't remember/list and until 
+                        I enjoy working with electronics and digital tools, no matter the complexity. I learned little skills at mediocre level that I can't remember or list and until 
                         impostor syndrome kicks in, I'm feeling okay.
                     </p>
-
+                    <div className="separator">
+                        <DFimg img="./assets/df/tom.png" 
+                        text={<p>It's close to midnight, and something evil's lurking in the dark,<br/>Under the moonlight, you see a sight that almost stops your heart.</p>}/>
+                    </div>
                 </div>
             )}
 
