@@ -1,25 +1,85 @@
 import React from "react"
+import DFHomeButton from "./props/DFHomeButton";
+import { useSection } from './SectionContext';
 
 export default function DFab({currentSection}){
     const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14"];
+    const dfa_headlines = ["1.2.3. Documentation & VCS", "4. CAD", "5. CCC", "6. Embedded Programming", "7. 3D Printing",
+    "8. Electronics Design", "9. CNC", "10. Electronics Production", "11. Output Devices", "12. Machine Building", "13. Input Devices", "14. Molding and Casting"];
+    const { handleButtonClick } = useSection();
+
     return(
         <div>
             {(currentSection === 'df-home') && (
-                <div className="profile">
+                <div>
                     <h1>Home</h1>
                     <img src="./assets/df/home.png" className="df-thumb"/>
                     <h2>Hi! I'm Thanh Vo and this is my Digital Fabrication documentation page.</h2>
-                    <span>Insert project grid here</span>
+
+                    <div className="df-grid">
+                        <DFHomeButton img="./assets/df/123/thumb.png" 
+                        text={dfa_headlines[0]} 
+                        currentSection={dfa_sections[0]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/4/thumb.png" 
+                        text={dfa_headlines[1]} 
+                        currentSection={dfa_sections[1]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/5/thumb.png" 
+                        text={dfa_headlines[2]} 
+                        currentSection={dfa_sections[2]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/6/thumb.png" 
+                        text={dfa_headlines[3]} 
+                        currentSection={dfa_sections[3]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/7/thumb.png" 
+                        text={dfa_headlines[4]} 
+                        currentSection={dfa_sections[4]} handleButtonClick={handleButtonClick}/>
+                    </div>
+                    
                 </div>
             )}
 
             {(currentSection === 'df-final') && (
-                <div className="profile">
+                <div className="df-docs">
                     <h1>Final project</h1>
-                    <img src="./assets/df/final.png" className="df-thumb"/>
-                    <h2>Bachelor final project</h2>
+                    <img src="./assets/df/final/final.png" className="df-thumb"/>
+                    <h2>Multi-fx digital guitar pedal</h2>
 
-                    <h2>Projects dump that benefits from assignments</h2>
+                    <h3>Plan</h3>
+
+                    <h3>Stage 1: Hardware rabit holes</h3>
+                    <p>
+                        I have some surface level ideas for what's coming next, but not enough to form a concrete plan, the purpose of this stage is to research.<br/>
+                        In a nutshell, I'm alternating the guitar signal digitally, so at the heart of the project, there is a DSP (Digital Signal Processing).<br/>
+                        <img src="./assets/df/final/img1.png" className="df-img"/>
+                        In the Input Stage of the DSP, the signal must be converted to digital, so there's an ADC (Analog-Digital Converter); and before being converted,
+                        the signal is required to be amplified so I'll place an op-amp before the ADC.<br/>
+                        <img src="./assets/df/final/img2.png" className="df-img"/>
+                        For the Output Stage of the DSP, surely it must play sound, and digitally, there are different methods for that. Luxuriously, I'd place a DAC and
+                        work with PCM output to inject to the DAC and receive analog signal; without a DAC, digital signal can be output with PWM or PDM. At the end of the
+                        signal chain, the output is amplified (and filtered for noise if necessary) so I'll have another op-amp there.<br/>
+                        <img src="./assets/df/final/img3.png" className="df-img"/>
+                        That's that on the surface, but I'm really blurry on how DSP works on hardware. I've been lurking on the internet and
+                        the choice of hardware ranges from full-fledged Raspberry Pi to tiny RP2040 to custom DSP hardware; in my assumption, custom DSP hardware is designed to be 
+                        efficient and only efficient for DSP, while microcontrollers/CPUs are designed to multi-function, including DSP. Doing a quick look on Google, I found a handful
+                        of information that helps. Analog Devices has an enormous educational library for DSP that dives in as deep as designing the architechture for hardware DSP.<br/>
+                        For now, that's a rabbit hole that <a href="./assets/df/final/img4.png">I don't wanna dive in yet</a>, I'll start with microcontrollers as they seem easier
+                        to code and are capable enough. The topic of DSP hardware will be explored later in electronics-focused weeks.
+                        <ul>
+                            <li><a href="https://www.analog.com/en/design-center/landing-pages/001/beginners-guide-to-dsp.html">Analog Devices Beginner's Guide to DSP</a></li>
+                            <li><a href="https://ohdsp.weebly.com">Open Hardware DSP platform</a></li>
+                            <li><a href="https://www.dspguide.com/pdfbook.htm">Digital Signal Processing (math) book</a></li>
+                        </ul>
+                    </p>
+                    <h4>Raspberry Pi</h4>
+                    <p>
+                        
+                    </p>
+                    <h4>Electro-smith Daisy Seed</h4>
+
+                    <h4>Others</h4>
+
+                    <h3>Stage 2: Breadboard/EE</h3>
+
+                    <h2>Side projects that benefit from assignments</h2>
 
                 </div>
             )}
@@ -39,8 +99,8 @@ export default function DFab({currentSection}){
                     </div>
 
                     <p className="forewords">
-                        I'm a Digital Systems and Design student at Aalto University, minor in Acoustics, also a professional procrastinator and a free time guitar player.<br/>
-                        I enjoy working with electronics and digital tools, no matter the complexity. I learned little skills that are too mediocre to include and until 
+                        I'm a Digital Systems and Design student at Aalto University, minor in Acoustics, professional procrastinator and free time guitar player.<br/>
+                        I enjoy working with electronics and digital tools, no matter the complexity. I learned little skills at mediocre level that I can't remember/list and until 
                         impostor syndrome kicks in, I'm feeling okay.
                     </p>
 
@@ -69,7 +129,7 @@ export default function DFab({currentSection}){
                         I hate coding and hate talking about it even more, but to summarize my experience: Build js modules from the root/homepage like a tree and strategically classify every 
                         elements to save yourself when styling.
                     </p>
-                    <img src="./assets/df/123/img1.jpg" className="df-img"/>
+                    <img src="./assets/df/123/img1.png" className="df-img"/>
                     <p>
                         I followed my plan and break the Page() down to 3 main components: NavigateBar(), Content(), Footer() which are js functions that can be reused to render
                         <ul>
@@ -135,14 +195,19 @@ export default function DFab({currentSection}){
                     </p>
                     <h2>Media optimization</h2>
                     <p>
-                        Depending on the situation, I may need to use an image optimization tool - which I then use Windows PowerToys' resizer for the sake of convenience. <br/>
-                        For video optimization, I've been a fond user of ffmpeg, both directly or through Handbrake.
+                        For photos, I use ImageMagick that is recommended by Kris. Mainly it's for unifying the image format to png as that's my preferred option (jpeg is optimized for space, but my images are small enough to keep the best quality) <br/>
+                        <code>magick image_name.jpg image_name.png</code>
+                        For video optimization, I've been a fond user of ffmpeg, both directly or through Handbrake. Now size optimization for videos is slightly more important than images,
+                        to control the video quality and size, I adjust the Constant Rate Factor -crf 23 with 23 being the default/balance number. I opt for -c:v libx264 (video codec H.264) as H.265 or HEVC is proprietary and not widely supported.
+                        <code>ffmpeg -i input.mp4 -c:v libx264 -crf 23 output.mp4</code>
+                        For audio workflow, depending on the situation, I'd find myself using the -an (mute audio) parameter or -c:a libopus -b:a 320k (audio codec opus and 320kbps bitrate)
+                        <code>ffmpeg -i input.mp4 -c:v libx264 -crf 23 -c:a libopus -b:a 320k output.mp4</code>
                     </p>
 
                     <h2>Afterwords</h2>
                     <p>
                         The webpage still has a lot to be fulfilled with more functions and generally rounded styling.<br/>
-                        I find documenting very challenging to balance between technical guidance and documented experience.
+                        I find documenting very challenging to balance between technical guidance and documented experience, as well as keeping it professional but personal.
                     </p>
 
                     <h2>References</h2>
@@ -156,7 +221,7 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week4') && (
-                <div className="profile">
+                <div className="df-docs">
                     <h1>Computer Aided Design</h1>
                     <img src="./assets/df/4/thumb.png" className="df-thumb"/>
                     <h2>Meshmixer</h2>
@@ -169,16 +234,16 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week5') && (
-                <div className="profile">
+                <div className="df-docs">
                     <h1>Computer-Controlled Cutting</h1>
-                    <img src="./assets/df/5/thumb.jpg" className="df-thumb"/>
+                    <img src="./assets/df/5/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
 
                 </div>
             )}
 
             {(currentSection === 'week6') && (
-                <div className="profile">
+                <div className="df-docs">
                     <h1>Embedded Programming</h1>
                     <img src="./assets/df/6/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
@@ -187,9 +252,9 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week7') && (
-                <div className="profile">
+                <div className="df-docs">
                     <h1>3D Scanning and Printing</h1>
-                    <img src="./assets/df/7/thumb.jpg" className="df-thumb"/>
+                    <img src="./assets/df/7/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
 
                 </div>

@@ -91,6 +91,8 @@
     width: 20px;
     height: 20px;
     margin-left: 5px;
+    filter: invert(58%) sepia(19%) saturate(6596%) hue-rotate(160deg) brightness(96%) contrast(102%);
+    pointer-events: none;
 }
 
 .profile-account {
@@ -152,11 +154,12 @@ code {
 
 .df-docs {
     margin-bottom: 20px;
+    width: 600px;
 }
 .df-thumb {
     width: 180px;
 }
-.df-docs h2 {
+.df-docs h2,h3,h4,h5{
     text-align: left;
     margin: 20 20px;
 }
@@ -174,6 +177,34 @@ code {
 }
 .df-img:hover {
     /*transform: scale(1.5);*/
+}
+
+.df-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.df-grid button {
+    width: 180px;
+    height: 220px;
+    border: none;
+    background: none;
+    font-weight: 500;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.df-grid button:hover {
+    filter: brightness(90%);
+}
+
+.df-grid-icon {
+    width: 180px;
+    border-radius: 20%;
+    margin-bottom: 5px;
 }
 
 

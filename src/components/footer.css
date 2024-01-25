@@ -19,7 +19,7 @@
     transition: opacity .15s, background-color .15s ease;
 }
 .socials button:hover {
-    background-color: #0091ea;
+    filter: brightness(90%);
 }
 .socials-icon {
     pointer-events: none;
