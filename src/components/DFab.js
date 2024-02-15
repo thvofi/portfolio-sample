@@ -241,8 +241,6 @@ export default function DFab({currentSection}){
                 <div className="df-docs">
                     <h1>Computer Aided Design</h1>
                     <img src="./assets/df/4/thumb.png" className="df-thumb"/>
-                    <h2>Meshmixer</h2>
-
                     <h2>Blender</h2>
 
                     <h2>Fusion360</h2>
@@ -255,7 +253,38 @@ export default function DFab({currentSection}){
                     <h1>Computer-Controlled Cutting</h1>
                     <img src="./assets/df/5/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
-
+                    <p>
+                        Initially, my plan was to make this week thumbnail: the cardboard model of the album Tranquility Base Hotel and Casino from the Arctic Monkeys, but the assignment requirements
+                        are to make a press-fit construction kit, so I had to think of something else. I spent quite some time thinking about what to make, but a lot of my ideas are way over my CAD skill. <br/>
+                        So when the deadline hit, I decided to start tiny and make the most basic press-fit box for my Aeropress coffee maker. I've been using it for a while and always wanted to have a box to store it and my coffee stuff.    
+                    </p>
+                    <h2>Design</h2>
+                    <p>
+                        <img src="./assets/df/5/img1.png" className="df-img"/>
+                        <img src="./assets/df/5/img2.png" className="df-img"/>
+                        <img src="./assets/df/5/img3.png" className="df-img"/>
+                        <img src="./assets/df/5/img4.png" className="df-img"/>
+                        <img src="./assets/df/5/img5.png" className="df-img"/>
+                        Parameters:
+                        <img src="./assets/df/5/img6.png" className="df-img"/>
+                        Press-fit joint thickness:
+                        <img src="./assets/df/5/img7.png" className="df-img"/>
+                        Offset joint with kerf:
+                        <img src="./assets/df/5/img8.png" className="df-img"/>
+                        Export 2D sketch to DXF:
+                        <img src="./assets/df/5/img9.png" className="df-img"/>
+                    </p>
+                    <h2>Cutting</h2>
+                    <p>
+                        20x20mm squares to calculate kerf:
+                        <img src="./assets/df/5/img10.png" className="df-img"/>
+                        kerf = (100 - 99.2)/5 = 0.16mm
+                        <img src="./assets/df/5/img11.png" className="df-img"/>
+                        Cutting (sorry, no video, I forgot to take one):
+                        <img src="./assets/df/5/img12.png" className="df-img"/>
+                        Result:
+                        <img src="./assets/df/5/img13.png" className="df-img"/>
+                    </p>
                 </div>
             )}
 

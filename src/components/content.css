@@ -261,6 +261,7 @@ code {
 
 .dfimg-img {
     width: 600px;
+    pointer-events: none;
 }
 
 .dfimg-text {

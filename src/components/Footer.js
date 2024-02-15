@@ -20,7 +20,7 @@ export default function Footer({section}){
                     <SocialsButton img="./assets/svg/spotify.svg" color="#1db954" text="Spotify" link="https://open.spotify.com/track/4PTG3Z6ehGkBFwjybzWkR8?si=f196b86e5e444022"/>
                 </div>
                 <div className="footer">
-                    <span>&copy; 0nitfans.com</span>
+                    <span>&copy; 0nitFans.com</span>
                 </div>
             </div>
             )}
@@ -35,7 +35,7 @@ export default function Footer({section}){
                     <SocialsButton img="./assets/svg/github.svg" color="#24292d" text="GitHub" link="https://github.com/thvofi"/>
                 </div>
                 <div className="footer">
-                    <span>&copy; 0nitfans.com</span>
+                    <span>&copy; 0nitFans.com</span>
                 </div>
             </div>
             )}
