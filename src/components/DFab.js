@@ -143,7 +143,7 @@ export default function DFab({currentSection}){
                         fuckers worked digitally and left me with a choice of picking React or tailwind-css to pickup first. Well you know what I picked.<br/>
                         From my limited experience with React, it's not static web designed for static documentation but rather a js app that work in html with css styling as its modules, therefore 
                         making the experience more responsive (by not jumping around html pages) and the modules are highly reusable.<br/>
-                        I hate coding and hate talking about it even more, but to summarize my experience: Build js modules from the root/homepage like a tree and strategically classify every 
+                        I <s>hate</s> don't enjoy coding and <s>hate</s> don't enjoy talking about it even more, but to summarize my experience: Build js modules from the root/homepage like a tree and strategically classify every 
                         elements to save yourself when styling.
                     </p>
                     <img src="./assets/df/123/img1.png" className="df-img"/>
@@ -176,6 +176,11 @@ export default function DFab({currentSection}){
                                 </ul>
                             </ul>
                         </ul>
+                        After making all that, I came to realization that packing the page into functions is a good and a handy way to organize it, but solving the CSS madness I faced previously could have been
+                        done way easier by (not learning React) just labeling the elements with proper organized class names, which indeed I did manually hand-styled all of the page. So that's a solid advice for anyone who wants to
+                        take on vanilla css: classify your elements and style them with a class system. I intentionally didn't include any details of the coding process here, since using React is irrelevant and unnecessary for documentation, 
+                        but recreating the page exactly with vanilla html/css is definitely achiveable and should be done before jumping on the React train.
+                        <img src="./assets/df/123/img2.png" className="df-img"/>
                         At this point, the page is roughly hand styled, not accounting:
                         <ul>
                             <li>overall transitions</li>
@@ -208,17 +213,34 @@ export default function DFab({currentSection}){
                             <li>commit & changelog: <code>git commit -m "changelog here"</code></li>
                             <li>push to repo: <code>git push</code></li>
                         </ul>
-                        There is also git pull to pull/update local repo and surely occationally you want to switch branches or jump from GitHub to GitLab, but I'm sure there're more in-depth guides available online. 
+                        There is also git pull to pull/update local repo and surely occationally you want to switch branches or jump from GitHub to GitLab, but I can't write it better than Git's <a href="https://git-scm.com/docs/gittutorial">documentation</a>. 
                     </p>
                     <h2>Media optimization</h2>
                     <p>
-                        For photos, I use ImageMagick that is recommended by Kris. Mainly it's for unifying the image format to png as that's my preferred option (jpeg is optimized for space, but my images are small enough to keep the best quality) <br/>
+                        For photos, I use ImageMagick that is recommended by Kris. Mainly it's for unifying the image format to png as that's my preferred option (jpeg is optimized for space, but my images are usually light enough to keep at my preferred quality [secret: 
+                        I work on multiple devices so I stack up screenshots or media through Telegram which already featured a handy image compressor that I can just drop in and use the images anyway]) <br/>
                         <code>magick image_name.jpg image_name.png</code>
                         For video optimization, I've been a fond user of ffmpeg, both directly or through Handbrake. Now size optimization for videos is slightly more important than images,
                         to control the video quality and size, I adjust the Constant Rate Factor -crf 23 with 23 being the default/balance number. I opt for -c:v libx264 (video codec H.264) as H.265 or HEVC is proprietary and not widely supported.
                         <code>ffmpeg -i input.mp4 -c:v libx264 -crf 23 output.mp4</code>
                         For audio workflow, depending on the situation, I'd find myself using the -an (mute audio) parameter or -c:a libopus -b:a 320k (audio codec opus and 320kbps bitrate)
                         <code>ffmpeg -i input.mp4 -c:v libx264 -crf 23 -c:a libopus -b:a 320k output.mp4</code>
+                        Just for demonstration, last year I did an experiment playing around with the crf and here are the results:
+                        <video width="560" src={process.env.PUBLIC_URL + '/assets/df/123/test_video.mp4'} type="video/mp4" controls muted>Test</video>
+                        Original video ^ | height 720 6.42MB 1455kbps
+                        <video width="560" src={process.env.PUBLIC_URL + '/assets/df/123/test_video_720_crf28.mp4'} type="video/mp4" controls muted/>
+                        crf 28 ^ | width 720 1.38MB 206kbps
+                        <video width="560" src={process.env.PUBLIC_URL + '/assets/df/123/test_video_720_crf30.mp4'} type="video/mp4" controls muted/>
+                        crf 30 ^ | width 720 1.21MB 163kbps
+                        <video width="560" src={process.env.PUBLIC_URL + '/assets/df/123/test_video_720_crf32.mp4'} type="video/mp4" controls muted/>
+                        crf 32 ^ | width 720 1.07MB 129kbps<br/>
+                        Now, as an amateur optimizer and a semi-professional parodist, I wanted to capture the soul of the multimedia hosted on this page, so now, I try to add my watermark to necessary images and videos.<br/>
+                        <img src="./assets/watermark.png" className="df-img"/>
+                        I looked up a few ways to do it, a few trials and errors later and I settle with these 2 commands:
+                        <code>magick composite -gravity southeast -geometry 20%x20%+10+10 watermark.png input.png output.png</code>
+                        <code>ffmpeg -i input.mp4 -i watermark.png -filter_complex "[1][0]scale2ref=w=oh*mdar:h=ih*0.05[logo][video];[video][logo]overlay=W-w-10:H-h-10" -c:a copy output.mp4</code>
+                        Here is an example video of something I did last year with added watermark:
+                        <video width="560" src={process.env.PUBLIC_URL + '/assets/df/123/vid1.mp4'} type="video/mp4" controls/>
                     </p>
 
                     <h2>Afterwords</h2>
@@ -232,7 +254,10 @@ export default function DFab({currentSection}){
                         <li><a href="https://react.dev/learn">React</a></li>
                         <li><a href="https://create-react-app.dev/docs/deployment/">React deployment guide</a></li>
                         <li><a href="https://www.youtube.com/watch?v=bMknfKXIFA8">React crash course</a></li>
-
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn">MDN web docs</a></li>
+                        <li><a href="https://git-scm.com/docs/gittutorial">Git</a></li>
+                        <li><a href="https://ffmpeg.org/ffmpeg.html">ffmpeg</a></li>
+                        <li><a href="https://imagemagick.org/script/magick.php">ImageMagick</a></li>
                     </ul>
                 </div>
             )}
@@ -290,7 +315,7 @@ export default function DFab({currentSection}){
 
             {(currentSection === 'week6') && (
                 <div className="df-docs">
-                    <h1>Embedded Programming</h1>
+                    <h1>Electronics Production</h1>
                     <img src="./assets/df/6/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
 
