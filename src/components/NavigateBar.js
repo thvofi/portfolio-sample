@@ -10,8 +10,8 @@ export default function NavigateBar(){
     const df_sections = ["df-home", "df-profile", "df-final"];
 
     const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14"];
-    const dfa_headlines = ["1.2.3. Documentation & VCS", "4. CAD", "5. CCC", "6. Embedded Programming", "7. 3D Printing",
-    "8. Electronics Design", "9. CNC", "10. Electronics Production", "11. Output Devices", "12. Machine Building", "13. Input Devices", "14. Molding and Casting"];
+    const dfa_headlines = ["1.2.3. Documentation & VCS", "4. CAD", "5. CCC", "6. Electronics Production", "7. 3D Printing",
+    "8. Embedded Programming", "9. CNC", "10. Electronics Design", "11. Output Devices", "12. Machine Building", "13. Input Devices", "14. Molding and Casting"];
     
     return(
         <header>

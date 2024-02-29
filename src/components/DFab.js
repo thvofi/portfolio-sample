@@ -5,8 +5,8 @@ import DFimg from "./props/DFimg";
 
 export default function DFab({currentSection}){
     const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14"];
-    const dfa_headlines = ["1.2.3. Documentation & VCS", "4. CAD", "5. CCC", "6. Embedded Programming", "7. 3D Printing",
-    "8. Electronics Design", "9. CNC", "10. Electronics Production", "11. Output Devices", "12. Machine Building", "13. Input Devices", "14. Molding and Casting"];
+    const dfa_headlines = ["1.2.3. Documentation & VCS", "4. CAD", "5. CCC", "6. Electronics Production", "7. 3D Printing",
+    "8. Embedded Programming", "9. CNC", "10. Electronics Design", "11. Output Devices", "12. Machine Building", "13. Input Devices", "14. Molding and Casting"];
     const { handleButtonClick } = useSection();
 
     return(
@@ -178,10 +178,11 @@ export default function DFab({currentSection}){
                         </ul>
                         After making all that, I came to realization that packing the page into functions is a good and a handy way to organize it, but solving the CSS madness I faced previously could have been
                         done way easier by (not learning React) just labeling the elements with proper organized class names, which indeed I did manually hand-styled all of the page. So that's a solid advice for anyone who wants to
-                        take on vanilla css: classify your elements and style them with a class system. I intentionally didn't include any details of the coding process here, since using React is irrelevant and unnecessary for documentation, 
-                        but recreating the page exactly with vanilla html/css is definitely achiveable and should be done before jumping on the React train.
+                        take on vanilla css: classify your elements and style them with a class system.
                         <img src="./assets/df/123/img2.png" className="df-img"/>
-                        At this point, the page is roughly hand styled, not accounting:
+                        I intentionally didn't include any details of the coding process here, since using React is irrelevant and unnecessary for documentation, 
+                        but recreating the page exactly with vanilla html/css is definitely achiveable and should be done before jumping on the React train.<br/>
+                        At this point, the page is roughly hand styled, not accounting for:
                         <ul>
                             <li>overall transitions</li>
                             <li>segments border</li>
@@ -192,7 +193,7 @@ export default function DFab({currentSection}){
                     <h2>Deployment</h2>
                     <p>
                         For me, this was where I faced most trouble. It started with initiating a development environment as unlike vanilla html, React codes are written in 
-                        jsx (js that includes html) and needed to be complied and host to see result. React documentation was pretty minimal about setting up and only suggested 
+                        jsx (js that includes html) and needed to be transformed into regular js and delivered to the browser. React documentation was pretty minimal about setting up and only suggested 
                         getting a template from react-scripts and start from there. <br/>
                         Then there is also publishing the page. I couldn't make it worked with GitLab as there is rarely any guidance on configuring the ci.yml for GitLab to deploy,
                         in combination with GitLab's confusing-af UI. Until I figure it out, this is hosted on GitHub Pages, which conveniently has a npm package called gh-pages.
@@ -327,7 +328,65 @@ export default function DFab({currentSection}){
                     <h1>3D Scanning and Printing</h1>
                     <img src="./assets/df/7/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
+                    <p>
+                        Last semester I got my ears 3D scanned and I've been planning to make custom IEMs for myself using a SLA printer. Honestly, I'm quite clueless on working and modeling scanned mesh, so to start
+                        small, I wanted to reshell a pair of cheap IEMs that I have. Introducing: the Moondrop Chu 2.  
+                        <img src="./assets/df/7/img1.png" className="df-img"/>
+                        It's a pair of $20 IEMs that sound good for the price and had a really simple construction: single dynamic driver, 2-pin connector, and a simple shell. I disassembled it, took some measurements and started modeling.
+                        <img src="./assets/df/7/img2.png" className="df-img"/>
+                    </p>
+                    <h2>Mesh working</h2>
+                    <p>
+                        Before I started, I tried some mesh working programs and decided to use Meshmixer as for me it has the most intuitive UI. Blender would works wonderfully here in the hands of a skilled designer, but I'm not one of them.
 
+                    </p>
+                    <h3>1. Clean up concha</h3>
+                    <p>First thing I did was to clean up the mesh file. The IEM fit only in the concha part of the ear, so I roughly remove the unnecessary outer ear to get a better visualization of my concha's shape.</p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/1 Clean Concha.mp4'} type="video/mp4" controls muted/>
+                    <h3>2. Rotate/orient</h3>
+                    <p>I needed to make an opening to the shell by using plane cut for a good flat surface. I judged by eye and rotate the model to find an optimal orientation to get a nice cut. It took me 2 trials.</p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/2.1 Orient For Cut.mp4'} type="video/mp4" controls muted/>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/2.2 Orient.mp4'} type="video/mp4" controls muted/>
+                    <h3>3. Plane cut</h3>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/3 Plane Cut.mp4'} type="video/mp4" controls muted/>
+
+                    <h3>4. Nozzle cut</h3>
+                    <p>It's important for me to cut the nozzle closest to the measured length since it's the only acoustical reference I have and I don't plan to mess with the driver. I used the measuring tool in Meshmixer to get the 5mm dimension and tried my best to align for an optimal cut.</p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/4 Nozzle Cut.mp4'} type="video/mp4" controls muted/>
+                    <img src="./assets/df/7/img3.png" className="df-img"/>
+                    <h3>5. Smooth and offset</h3>
+                    <p>
+                        After getting the rough shape, I first needed to invert the mesh as the original scan was open, not closed mesh; when the fill mesh applied after cutting, the mesh was inside out.
+                        I smoothen the nozzle and slightly offset the body outwards to fit snugly. I then printed the model to test the fit and figure out components position.
+                    </p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/5.1 Smooth Nozzle.mp4'} type="video/mp4" controls muted/>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/5.2 Smooth Offset.mp4'} type="video/mp4" controls muted/>
+                    <img src="./assets/df/7/img4.png" className="df-img"/>
+                    <p>The model fit very well as expected, although there are needed improvements to it: the top and bottom can be reduced to have more rounded edges and also improve the overall shape and stability.</p>
+                    <h3>6. Remesh</h3>
+                    <p>The model's remeshed to a finer 'resolution' so that it's a little easier to select and sculpt.</p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/6 Remesh Smooth.mp4'} type="video/mp4" controls muted/>
+                    <h3>7. Sculpt</h3>
+                    <p>Following my plan to reduce the edges, I abused the smooth tool in meshmixer to sculpt a comfortable overall shape.</p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/7.1 Sculp Features.mp4'} type="video/mp4" controls muted/>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/7.2 Sculpt Tail.mp4'} type="video/mp4" controls muted/>
+                    <h3>8. Extrude</h3>
+                    <p>I selected a big chunk of of the top surface to extrude as I needed depth to fit the 2-pin connector and would plan to use it as the opening of the shell.</p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/8 Extrude.mp4'} type="video/mp4" controls muted/>
+                    <h3>9. Sculpt more</h3>
+                    <p>I tried my best to futher sculpt the shell to an usable, more 'organic' shape then printed it out to check the fit again.</p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/9 More Work.mp4'} type="video/mp4" controls muted/>
+                    <h3>Rework</h3>
+                    <p>
+                        As far as it goes right now, the shape doesn't look horrible, but I noticed a) the extrusion surface I selected looked very janky and in a weird shape, b) I couldn't sculpt the transition of the extrusion correctly, as
+                        it's looking very blocky and unnatural.
+                    </p>
+                    <img src="./assets/df/7/img5.png" className="df-img"/>
+                    <p>
+                        My next step/approach would be to rework on the extrusion to make the shape slimmer and more natural, I'd only extrude the connector and have its position tilted.
+                        Then I can add the connector to the model, hollow it out then print it out again to start assembling.
+                    </p>
+                    <h2>3D Scanning</h2>
                 </div>
             )}
 
