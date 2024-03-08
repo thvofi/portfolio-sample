@@ -33,6 +33,9 @@ export default function DFab({currentSection}){
                         <DFHomeButton img="./assets/df/7/thumb.png" 
                         text={dfa_headlines[4]} 
                         currentSection={dfa_sections[4]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/8/thumb.png" 
+                        text={dfa_headlines[5]} 
+                        currentSection={dfa_sections[5]} handleButtonClick={handleButtonClick}/>
                     </div>
                     
                 </div>
@@ -89,9 +92,26 @@ export default function DFab({currentSection}){
                             <li><a href="https://github.com/GuitarML/DaisySeedProjects/releases/tag/v1.1">GuitarML's Modules</a></li>
                         </ul>
                     </p>
-                    <h4>Others</h4>
-
-                    <h3>Stage 2: </h3>
+                    <h4>Updates (March 2024)</h4>
+                    <p>
+                        Roughly 2 months have passed since my last write-up of the final project, and what's new? 
+                        <ul>
+                            <li>I've finished my first digital (or virtual analog) modeling of an effect pedal (MXR phase 100) in MATLAB as a course project. I've been working on the next step of implemeting my algorithm in realtime interchangeably with Juce framework and with C++ in DaisySP library to learn about optimizing resources in realtime processing.</li>
+                            <li>I digged wider and was exposed to the wonderful world of Machine Learning for VA modeling. I got on the hype train for NeuralDSP, ToneX, NAM and now, I am obliged to take a minor in Data Science.</li>
+                            <li>Initially, I wanted the Raspberry Pi SBC to be the core of my pedal, as I imagined deploying effects on it would be as simple as drag-and-drop VST. Now I'm even deeper in r/diypedal rabbit hole, I narrowed down my options further:
+                                <ul>
+                                    <li><b>Electrosmith Daisy Seed</b>: This is my selected option, as for me it's in the first difficulty of working with a module, not having to deal much with circuitry design, while being powerful, widely popular and having great community support. I'm starting by deploying my own digital model as a traditional way of VA DSP, but the platform is so
+                                        great that when I'm ready, I can dip into the world of Machine Learning with the work of GuitarML and few people who have done it before me.
+                                    </li>
+                                    <li><b>Spin FV-1</b>: This is the oldest and the DIY standard programmable DSP IC, especially inside digital delay/reverb pedals. I'd like to explore the chipset as a standalone side project in the second difficulty of reading datasheet, designing PCB and programming.</li>
+                                    <li><b>STM32</b>: Funny enough, STM32 is featured on the Daisy Seed module as its brain and rightfully so, it is a very capable chip, and like Neil once said (paraphrased with bad grammar): <i>With any pin increasement, make it exponentially more difficult to work with.</i> It's not impossible, and I'm motivated by many videos from <a href="https://www.youtube.com/channel/UCVryWqJ4cSlbTSETBHpBUWw/videos">Phil's Lab</a>, 
+                                    but I need to sharpen a lot more to start making complicated modules. I'll place it as the final boss of the project.</li>
+                                </ul>
+                            </li>
+                            <li>My priority at the moment is focusing on the software as the 2nd stage of the project, as I'm armed with guidance and resources from my Audio Signal Processing course to further develop my DSP knowledge and skills (not related but I also need to pass that course.)</li>
+                        </ul>
+                    </p>
+                    <h3>Stage 2: DSP Platform and Prototyping</h3>
 
                     <h2>Side projects that benefit from assignments</h2>
 
@@ -217,10 +237,21 @@ export default function DFab({currentSection}){
                         There is also git pull to pull/update local repo and surely occationally you want to switch branches or jump from GitHub to GitLab, but I can't write it better than Git's <a href="https://git-scm.com/docs/gittutorial">documentation</a>. 
                     </p>
                     <h2>Media optimization</h2>
+                    <h3>ImageMagick</h3>
                     <p>
                         For photos, I use ImageMagick that is recommended by Kris. Mainly it's for unifying the image format to png as that's my preferred option (jpeg is optimized for space, but my images are usually light enough to keep at my preferred quality [secret: 
                         I work on multiple devices so I stack up screenshots or media through Telegram which already featured a handy image compressor that I can just drop in and use the images anyway]) <br/>
                         <code>magick image_name.jpg image_name.png</code>
+                        Resizing and compressing:
+                        <code>magick convert input.png -resize 1920x -strip -quality 85 output.png</code>
+                        <ul>
+                            <li><b>-resize 1920x</b> resizes the image to a width of 1920 pixels. The height will be adjusted automatically to maintain the aspect ratio.</li>
+                            <li><b>-strip</b> removes any metadata from the image.</li>
+                            <li><b>-quality 85</b> sets the compression level. 100 is the highest quality (least compression), and 0 is the lowest quality (most compression). 85 is a good balance between file size and image quality.</li>
+                        </ul>
+                    </p>
+                    <h3>FFmpeg</h3>
+                    <p>
                         For video optimization, I've been a fond user of ffmpeg, both directly or through Handbrake. Now size optimization for videos is slightly more important than images,
                         to control the video quality and size, I adjust the Constant Rate Factor -crf 23 with 23 being the default/balance number. I opt for -c:v libx264 (video codec H.264) as H.265 or HEVC is proprietary and not widely supported.
                         <code>ffmpeg -i input.mp4 -c:v libx264 -crf 23 output.mp4</code>
@@ -235,6 +266,14 @@ export default function DFab({currentSection}){
                         crf 30 ^ | width 720 1.21MB 163kbps
                         <video width="560" src={process.env.PUBLIC_URL + '/assets/df/123/test_video_720_crf32.mp4'} type="video/mp4" controls muted/>
                         crf 32 ^ | width 720 1.07MB 129kbps<br/>
+                    </p>
+                    <h3>Handbrake</h3>
+                    <p>
+                        Usually when I batch process videos, I'd use Handbrake as it's more user-friendly and has a better UI for batch processing. I found the Very Fast 720p30 preset to be a good balance between quality and size. Depending on the video, I'd adjust the crf from 23 to 28.
+                        <img src="./assets/df/123/img3.png" className="df-img"/>
+                    </p>
+                    <h3>Watermarking</h3>
+                    <p>
                         Now, as an amateur optimizer and a semi-professional parodist, I wanted to capture the soul of the multimedia hosted on this page, so now, I try to add my watermark to necessary images and videos.<br/>
                         <img src="./assets/watermark.png" className="df-img"/>
                         I looked up a few ways to do it, a few trials and errors later and I settle with these 2 commands:
@@ -243,7 +282,6 @@ export default function DFab({currentSection}){
                         Here is an example video of something I did last year with added watermark:
                         <video width="560" src={process.env.PUBLIC_URL + '/assets/df/123/vid1.mp4'} type="video/mp4" controls/>
                     </p>
-
                     <h2>Afterwords</h2>
                     <p>
                         The webpage still has a lot to be fulfilled with more functions and generally rounded styling.<br/>
@@ -267,8 +305,13 @@ export default function DFab({currentSection}){
                 <div className="df-docs">
                     <h1>Computer Aided Design</h1>
                     <img src="./assets/df/4/thumb.png" className="df-thumb"/>
-                    <h2>Blender</h2>
+                    <h2>Illustrator</h2>
 
+                    <h2>Photoshop</h2>
+                    <p>
+                        I'm no stranger to Photoshop, one of my finest work can be found in my <u>About me</u> page. Below is a quick demonstration of my workflow working with screenshots for this documentation.
+
+                    </p>
                     <h2>Fusion360</h2>
 
                 </div>
@@ -318,8 +361,34 @@ export default function DFab({currentSection}){
                 <div className="df-docs">
                     <h1>Electronics Production</h1>
                     <img src="./assets/df/6/thumb.png" className="df-thumb"/>
-                    <h2>Plan</h2>
-
+                    <h2>Preparing</h2>
+                    <p>The group documentation can be found here: <a href="https://digital-fabrication-portfolio-miro-keimioniemi-a2f2c11a6e705b8f.gitlab.io/p/electronics-production/#group-assignment">Miro's DF</a>. You outdid it again Miro, thanks for the detailed tutorial. Now every person that comes across my documentation will have a nice time contrasting your Pulitzer winning article with my Reddit comment (credits to John Mulaney for the joke.)<br/>
+                    Since Miro did all the heavy lifting, I've spent time splitting Kris's CopperCAM tutorial into small segments that to me are complementary to Miro's effort.</p>
+                    <h3>1. Importing gerbers</h3>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/1.Import.mp4'} type="video/mp4" controls/>
+                    <h3>2. Importing drills</h3>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/2.Drill.mp4'} type="video/mp4" controls/>
+                    <h3>3. Bits and tools</h3>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/3.1.Bits.mp4'} type="video/mp4" controls/>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/3.2.Tool.mp4'} type="video/mp4" controls/>
+                    <h3>4. Calculating contours/tool paths</h3>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/4.Path.mp4'} type="video/mp4" controls/>
+                    <h3>5. Exporting </h3>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/5.Export.mp4'} type="video/mp4" controls/>
+                    <h2>Making the Tarantino board</h2>
+                    <p>
+                        Engraving takes 10 minutes, cutting takes 2 minutes. For the sake of demonstration, here are the sped up videos of the process:
+                    </p>
+                    <h3>Engraving</h3>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/Engrave.mp4'} type="video/mp4" controls muted/>
+                    <h3>Cutting</h3>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/Cut.mp4'} type="video/mp4" controls muted/>
+                    <p>
+                        Before and after:
+                        <img src="./assets/df/6/img1.png" className="df-img"/>
+                        Soldered:
+                        <img src="./assets/df/6/img2.png" className="df-img"/>
+                    </p>
                 </div>
             )}
 
@@ -387,6 +456,14 @@ export default function DFab({currentSection}){
                         Then I can add the connector to the model, hollow it out then print it out again to start assembling.
                     </p>
                     <h2>3D Scanning</h2>
+                </div>
+            )}
+            {(currentSection === 'week8') && (
+                <div className="df-docs">
+                    <h1>Embedded Programming</h1>
+                    <img src="./assets/df/8/thumb.png" className="df-thumb"/>
+                    <h2>Plan</h2>
+
                 </div>
             )}
 
