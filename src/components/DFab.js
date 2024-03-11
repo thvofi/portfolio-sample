@@ -345,6 +345,7 @@ export default function DFab({currentSection}){
                     </p>
                     <h2>Cutting</h2>
                     <p>
+                        Mika's documentation page can be found <a href="https://mikajarvi.gitlab.io/digital-fabrication/laser-cutting.html">here</a>.<br/>
                         20x20mm squares to calculate kerf:
                         <img src="./assets/df/5/img10.png" className="df-img"/>
                         kerf = (100 - 99.2)/5 = 0.16mm
@@ -377,17 +378,20 @@ export default function DFab({currentSection}){
                     <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/5.Export.mp4'} type="video/mp4" controls/>
                     <h2>Making the Tarantino board</h2>
                     <p>
-                        Engraving takes 10 minutes, cutting takes 2 minutes. For the sake of demonstration, here are the sped up videos of the process:
+                        Engraving took 10 minutes, cutting took 2 minutes. For the sake of demonstration, here are the 5x sped up videos of the process:
                     </p>
                     <h3>Engraving</h3>
                     <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/Engrave.mp4'} type="video/mp4" controls muted/>
                     <h3>Cutting</h3>
                     <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/Cut.mp4'} type="video/mp4" controls muted/>
                     <p>
+                        During my first attempt, I noticed the text engrave was to big while traces were too small, which were strange as Burak's intruction was using 4 passes and I used 3. I tried making a second board and this time, it turned out fine. My suspicion is that when setting the z-axis, for the paper calibration of the MDX-40, I punctured the paper too hard and the z-axis was deeper than it should be.<br/>
                         Before and after:
                         <img src="./assets/df/6/img1.png" className="df-img"/>
                         Soldered:
                         <img src="./assets/df/6/img2.png" className="df-img"/>
+                        I was careful enough to test the board continuity after soldering, hence the code worked fine on the first try.
+                        <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/vid1.mp4'} type="video/mp4" controls/>
                     </p>
                 </div>
             )}
