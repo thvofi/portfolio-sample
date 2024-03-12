@@ -309,11 +309,53 @@ export default function DFab({currentSection}){
 
                     <h2>Photoshop</h2>
                     <p>
-                        I'm no stranger to Photoshop, one of my finest work can be found in my <u>About me</u> page. Below is a quick demonstration of my workflow working with screenshots for this documentation.
+                        I'm no stranger to Photoshop, one of my finest work can be found in my <u>About me</u> page. Below is a quick demonstration of my workflow working with screenshots for the documentation.
 
                     </p>
                     <h2>Fusion360</h2>
-
+                    <p>
+                        I started with an outline sketch using the dimension tool to quickly match the width and height of the shell.
+                        <img src="./assets/df/4/img1.png" className="df-img"/>
+                        Then I extruded the sketch to the desired z-height and used shell tool to hollow the shell with 5mm thickness.
+                        <img src="./assets/df/4/img2.png" className="df-img"/>
+                        I needed to make more sketch on the top of the shell to add holes for the potentiometers and switches. At that point, I realized since I'm making it parametric, I added my user parameters to the sketch, in this case, the potentiometer's dimensions.
+                        <img src="./assets/df/4/img3.png" className="df-img"/>
+                        I added construction lines and used dimension tool to align the holes center accordingly. The distance between the top edge to the first row of holes should be large enough to fit the potentiometers so I defined the distance as the potentiometer's radius.
+                        <img src="./assets/df/4/img4.png" className="df-img"/>
+                        Between 2 rows of holes, I defined the distance as the potentiometer's height; and the distance between the side holes and the side edges is also the potentiometer's radius.
+                        <img src="./assets/df/4/img5.png" className="df-img"/>
+                        <img src="./assets/df/4/img6.png" className="df-img"/>
+                        After getting all the intersections, I added the holes sketcch with circle tool. Here I also defined the diameter to match the potentiometer's shaft parameter.
+                        <img src="./assets/df/4/img7.png" className="df-img"/>
+                        At this moment, I forgot to take account of the shell thickness, so I added the thickness parameter and modified the construction line to add thickness to spacing. I used measure tool to check the distance between 2 pots to confirm the pots weren't overlapping whick they weren't (18mm > 17mm).
+                        <img src="./assets/df/4/img8.png" className="df-img"/>
+                        <img src="./assets/df/4/img9.png" className="df-img"/>
+                        To further be reminded of the shell thickness, I used the offset tool to create a thickness contruction outline inside the shape.
+                        <img src="./assets/df/4/img10.png" className="df-img"/>
+                        <img src="./assets/df/4/img12.png" className="df-img"/>
+                        I continue with the foot switch, I added the switch's parameters and sketch its outline as contruction. I made the hole with the center point then mirrored it to the other side.
+                        <img src="./assets/df/4/img13.png" className="df-img"/>
+                        <img src="./assets/df/4/img14.png" className="df-img"/>
+                        <img src="./assets/df/4/img15.png" className="df-img"/>
+                        I also added a screen to the lower half of the pedal and added a rectangle accordingly to the screen's dimensions.
+                        <img src="./assets/df/4/img16.png" className="df-img"/>
+                        <img src="./assets/df/4/img17.png" className="df-img"/>
+                        Finally, I added the LED holes and the sketch is ready to be extrude.
+                        <img src="./assets/df/4/img18.png" className="df-img"/>
+                        I selected all the holes and extrude them to the shell's thickness, with opertation set to cut.
+                        <img src="./assets/df/4/img19.png" className="df-img"/>
+                        Here is the final result of the shell.
+                        <img src="./assets/df/4/img20.png" className="df-img"/>
+                        Since it's a software week, I wanted to try out the rendering feature of Fusion360, so I experimented with a few materials and rendered the shell.
+                        <img src="./assets/df/4/img21.png" className="df-img"/>
+                        <img src="./assets/df/4/img22.png" className="df-img"/>
+                        <img src="./assets/df/4/img23.png" className="df-img"/>
+                        Quick 75% quality render of the pedal shell:
+                        <img src="./assets/df/4/img11.png" className="df-img"/>
+                        After modeling the shell, I realized I accidentally messed up the shell thickness from 2mm to 5mm, so unintentionally, I had the perfect demonstration of one of the benefits of parametric modeling: I only needed to change the thickness parameter and the whole model magically updated accordingly.
+                        <img src="./assets/df/4/img24.png" className="df-img"/>
+                        <video width="560" src={process.env.PUBLIC_URL + '/assets/df/4/vid1.mp4'} type="video/mp4" controls/>
+                    </p>
                 </div>
             )}
 
@@ -385,7 +427,7 @@ export default function DFab({currentSection}){
                     <h3>Cutting</h3>
                     <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/Cut.mp4'} type="video/mp4" controls muted/>
                     <p>
-                        During my first attempt, I noticed the text engrave was to big while traces were too small, which were strange as Burak's intruction was using 4 passes and I used 3. I tried making a second board and this time, it turned out fine. My suspicion is that when setting the z-axis, for the paper calibration of the MDX-40, I punctured the paper too hard and the z-axis was deeper than it should be.<br/>
+                        During my first attempt, I noticed the text engrave was too big while traces were too small, which were strange as Burak's intruction was using 4 passes and I used 3. I tried making a second board and this time, it turned out fine. My suspicion is that when setting the z-axis, for the paper calibration of the MDX-40, I punctured the paper too hard and the z-axis was deeper than it should be.<br/>
                         Before and after:
                         <img src="./assets/df/6/img1.png" className="df-img"/>
                         Soldered:
