@@ -306,11 +306,15 @@ export default function DFab({currentSection}){
                     <h1>Computer Aided Design</h1>
                     <img src="./assets/df/4/thumb.png" className="df-thumb"/>
                     <h2>Illustrator</h2>
-
+                    <p>
+                        I've been using Illustrator for a while, mainly for vector graphics and logo design. I'm not a professional, but I can get around with the pen tool and the shape tool. For the task at hand, I used Illustrator to create an engraving face plate for my pedal project.
+                        <img src="./assets/df/4/pedal-face.png" className="df-img"/>
+                    </p>
                     <h2>Photoshop</h2>
                     <p>
                         I'm no stranger to Photoshop, one of my finest work can be found in my <u>About me</u> page. Below is a quick demonstration of my workflow working with screenshots for the documentation.
-
+                        <img src="./assets/df/4/pts.png" className="df-img"/>
+                        Like every image editing tool, 5 most basic tools are: selection, crop, move, text and brush. I mainly enjoy using red brush and text to annotate my images. One feature of Photoshop that it is layer based, so it's easy to manage an image component and editing process can be non-destructive. Photoshop also features a handy resize tool, which can be found in the Image > Image Size menu, here I can resize the image to a desired dimension and resolution.
                     </p>
                     <h2>Fusion360</h2>
                     <p>
