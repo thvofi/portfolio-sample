@@ -131,7 +131,7 @@ export default function DFab({currentSection}){
                         </ul>
                     </p>
                     <h3>Stage 2: DSP Platform and Prototyping (to be continued)</h3>
-                    <h3>Stage 3: Electronics Design (April 2024 updates)</h3>
+                    <h3>Stage 3: Electronics Design (late April 2024 updates)</h3>
                     <p>
                         Such a tease!
                         <img src="./assets/df/final/img5.png" className="df-img"/>
