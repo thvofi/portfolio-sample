@@ -4,9 +4,10 @@ import { useSection } from './SectionContext';
 import DFimg from "./props/DFimg";
 
 export default function DFab({currentSection}){
-    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14"];
+    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14","week15"];
     const dfa_headlines = ["1.2.3. Documentation & VCS", "4. CAD", "5. CCC", "6. Electronics Production", "7. 3D Printing",
-    "8. Embedded Programming", "9. CNC", "10. Electronics Design", "11. Output Devices", "12. Machine Building", "13. Input Devices", "14. Molding and Casting"];
+    "8. Embedded Programming", "9. CNC", "10. Electronics Design", "11. Output Devices", "12. Midterm", "13. Input Devices", "14. Molding and Casting",
+    "15. Networking and Communications"];
     const { handleButtonClick } = useSection();
 
     return(
@@ -36,6 +37,24 @@ export default function DFab({currentSection}){
                         <DFHomeButton img="./assets/df/8/thumb.png" 
                         text={dfa_headlines[5]} 
                         currentSection={dfa_sections[5]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/9/thumb.png" 
+                        text={dfa_headlines[6]} 
+                        currentSection={dfa_sections[6]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/10/thumb.png" 
+                        text={dfa_headlines[7]} 
+                        currentSection={dfa_sections[7]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/11/thumb.png" 
+                        text={dfa_headlines[8]} 
+                        currentSection={dfa_sections[8]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/12/thumb.gif" 
+                        text={dfa_headlines[9]} 
+                        currentSection={dfa_sections[9]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/13/thumb.png" 
+                        text={dfa_headlines[10]} 
+                        currentSection={dfa_sections[10]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/14/thumb.png" 
+                        text={dfa_headlines[11]} 
+                        currentSection={dfa_sections[11]} handleButtonClick={handleButtonClick}/>
                     </div>
                     
                 </div>
@@ -111,8 +130,16 @@ export default function DFab({currentSection}){
                             <li>My priority at the moment is focusing on the software as the 2nd stage of the project, as I'm armed with guidance and resources from my Audio Signal Processing course to further develop my DSP knowledge and skills (not related but I also need to pass that course.)</li>
                         </ul>
                     </p>
-                    <h3>Stage 2: DSP Platform and Prototyping</h3>
-
+                    <h3>Stage 2: DSP Platform and Prototyping (to be continued)</h3>
+                    <h3>Stage 3: Electronics Design (April 2024 updates)</h3>
+                    <p>
+                        Such a tease!
+                        <img src="./assets/df/final/img5.png" className="df-img"/>
+                    </p>
+                    <h4>Design considerations</h4>
+                    <h4>`Building` on the shoulders of giants</h4>
+                    <h4>Breaking into modules</h4>
+                    <h4>Software and creative liberties</h4>
                     <h2>Side projects that benefit from assignments</h2>
 
                 </div>
@@ -514,6 +541,127 @@ export default function DFab({currentSection}){
                     <img src="./assets/df/8/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
 
+                </div>
+            )}
+
+            {(currentSection === 'week9') && (
+                <div className="df-docs">
+                    <h1>Computer Controlled Machining</h1>
+                    <img src="./assets/df/9/thumb.png" className="df-thumb"/>
+                    <h2>Plan</h2>
+
+                </div>
+            )}
+
+            {(currentSection === 'week10') && (
+                <div className="df-docs">
+                    <h1>Electronics Design</h1>
+                    <img src="./assets/df/10/thumb.png" className="df-thumb"/>
+                    <h2>Plan</h2>
+
+                </div>
+            )}
+
+            {(currentSection === 'week11') && (
+                <div className="df-docs">
+                    <h1>Output Devices</h1>
+                    <img src="./assets/df/11/thumb.png" className="df-thumb"/>
+                    <h2>Plan</h2>
+                    
+                </div>
+            )}
+
+            {(currentSection === 'week12') && (
+                <div className="df-docs">
+                    <h1>Midterm</h1>
+                    <img src="./assets/df/12/thumb.gif" className="df-img"/>
+                </div>
+            )}
+
+            {(currentSection === 'week13') && (
+                <div className="df-docs">
+                    <h1>Input Devices</h1>
+                    <img src="./assets/df/13/thumb.png" className="df-thumb"/>
+                    <h2>Plan</h2>
+
+                </div>
+            )}
+
+            {(currentSection === 'week14') && (
+                <div className="df-docs">
+                    <h1>Molding and Casting</h1>
+                    <img src="./assets/df/14/thumb.png" className="df-thumb"/>
+                    <h2>Group Assignment</h2>
+                    <h4>(Special thanks to Saskia for being the instructor)</h4>
+                    <h5>Sorry Mikko, until I figure out how to properly fix my codes, you might have to redirect to the whole website as the group assignment</h5>
+                    <p>
+                        For the final week of Digital Fabrication II, we are introduced to Molding and Casting.<br/> We start by entering the special molding and casting area, where you navigate around to find materials and tools below:
+                        <img src="./assets/df/14/img1.png" className="df-img"/>
+                    </p>
+                    <h3>Materials</h3>
+                    <p>
+                        We have 3 materials from the manufacturer <a href="https://www.smooth-on.com">Smooth-On</a> to work with:
+                        <ul>
+                            <li><b>Mold Star 15</b>: Silicone Rubber</li>
+                            <li><b>Sorta-Clear 37</b>: Food safe Silicone Rubber</li>
+                            <li><b>Smooth-Cast 305</b>: Liquid Plastic</li>
+                        </ul>
+                        By looking at the boxes' tags, we can find the materials' names to look up for more information on Smooth-On website, while roughly anticipate their properties and usage.
+                        <img src="./assets/df/14/umb_mold.png" className="df-img"/>
+                        <img src="./assets/df/14/umb_food.png" className="df-img"/>
+                        <img src="./assets/df/14/umb_plastic.png" className="df-img"/>
+                        <b>Pot Life:</b> the time from mixing the two packs together to the point at which the mixed paint is no longer useable<br/><b>Cure Time:</b> the time it takes for the material to fully cure after being poured into the mold.
+                    </p>
+                    <h4>Datasheets</h4>
+                    <p>
+                    Reading the materials' datasheets is absolutely crucial to understand the materials' properties and how to work with them. Smooth-On offers a lot of information on their website, including datasheets, technical bulletins, and instructional videos; while including 2 copies of the datasheets in the box, one highly detailed safety datasheet and one more user-friendly datasheet.<br/>
+                    Here I've included le user-friendlie datasheets for the materials we are working with. We can grasp good overview on the material, its technical properties, and how to work with it; pay special attention to <b>Safety First!</b> red headline to notice the material safety precautions. 
+                        <img src="./assets/df/14/mold_star.png" className="df-img"/>
+                        Mold Star silicone rubber is the material we use to make our molds. The mixing ratio is 1A:1B by volume or weight. We're using "Mold Star 15-SLOW", which has 50 minutes of pot life, and 4 hours of curing time. The cured end result is a soft, strong rubber. It can be used to cast materials up to 232 degrees celcius.<br/>
+                        When handling the material we must wear gloves. Operations should be done in room temperature.
+                        <img src="./assets/df/14/food_safe.png" className="df-img"/>
+                        Sorta-Clear FOOD SAFE silicone rubber is a translucent material used to make molds, mainly used for applications where it is important to see the cast material inside the mold. Works similary as Mold Star, but its special quirk is being Food Safe. We're using "Sorta-Clear 37", which has 25 minutes of pot life, and 4 hours of curing time. It has a mixing ratio of 1A:1B by volume<br/>
+                        When handling the material we must wear gloves. Operations should be done in room temperature. 
+                        <img src="./assets/df/14/plastic.png" className="df-img"/>
+                        Smooth-Cast liquid plastic is the material which we use to cast. It produces a bright, white, hard plastic when cured. We are using "SmoothCast 305", which has 7 minutes of pot life, and 30 minutes of curing time. It has a mixing ratio of 1A:1B by volume, or 100A:90B by weight.<br/>
+                        When handling the material we must wear gloves. Operations should be done in room temperature. 
+                    </p>
+                    <h3>Safety</h3>
+                    <p>
+                        By reading Safety Datasheets, we can understand the materials' hazards and how to work with them safely. While our Silicone Rubber materials are relatively safe, Liquid Plastic is a hazardous material and should be handled with care. I'll link the detailed datasheets below:
+                        <ul>
+                            <li><a href="https://www.smooth-on.com/msds/files/BD_DS_Eco_Equ_EZB_EZS_Psy_MS_OOMOO_Reb_ST_SS_Soma_Sol_Sorta.pdf">Mold Star 15 and Sorta-Clear 37</a></li>
+                            <li><a href="https://www.smooth-on.com/msds/files/Smooth-Cast_305_310.pdf">Smooth-Cast 305</a></li>
+                        </ul>
+                        Now it's time to glove up, coat on and start working.
+                    </p>
+
+                    <h3>Process</h3>
+                    <p>
+                        The process of molding and casting is relatively simple, but it requires precision and care. We start by preparing the model, then making the mold, and finally casting the material.<br/>
+                        First step is to unbox the mold mixtures. All of the materials are 2 parts mold, so we need to mix them by ratio. We start by 'warming up' each part by stirring them, as it's necessary to get our liquid fluid.<br/>
+                    </p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid2.mp4'} type="video/mp4" controls muted/>
+                    <p>
+                    We then measure the parts by weight or volume, depending on the material, and mix them together. 
+                    </p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid3.mp4'} type="video/mp4" controls muted/>
+                    <p>
+                    We stir the mixture for a few minutes to ensure the material is mixed properly
+                    </p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid1.mp4'} type="video/mp4" controls muted/>
+                    <p>
+                    The mixture is then put in to a vacuum chamber to remove any air bubbles. This is important as air bubbles can cause defects in the mold. 
+                    After turning on the pump and closed the valve, we let the mixture sit as the negative pressure will pull the bubbles from our mixture; we closely monitor the pressure reader, slowly release the valve when the pressure hits 400mbar mark then close the valve again, rinse and repeat until bubbles are clear from the muxture surface.
+                    <img src="./assets/df/14/pressure.png" className="df-img"/>
+                    </p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid4.mp4'} type="video/mp4" controls muted/>
+                    <p>
+                        Then, we pour the mixture into the mold box, and let it cure for the specified time. The key to a bubble free pouring job is to pour it from a height, keeping stream as a tiny string or tiny droplets.
+                        <img src="./assets/df/14/mold.png" className="df-img"/>
+                        After we have our silicone mold, we repeat the same process with the liquid plastic. For a 2 sided plastic mold, after filling 2 parts of the mold, we let the plastic cured for half the cured time, then we close the mold and let it cure for the rest of the time with a weight placed on top to tighly shut.
+                    </p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid5.mp4'} type="video/mp4" controls muted/>
                 </div>
             )}
 
