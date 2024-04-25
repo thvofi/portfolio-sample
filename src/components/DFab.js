@@ -641,15 +641,15 @@ export default function DFab({currentSection}){
                         The process of molding and casting is relatively simple, but it requires precision and care. We start by preparing the model, then making the mold, and finally casting the material.<br/>
                         First step is to unbox the mold mixtures. All of the materials are 2 parts mold, so we need to mix them by ratio. We start by 'warming up' each part by stirring them, as it's necessary to get our liquid fluid.<br/>
                     </p>
-                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid2.mp4'} type="video/mp4" controls muted/>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid2.mp4'} type="video/mp4" controls loop muted/>
                     <p>
                     We then measure the parts by weight or volume, depending on the material, and mix them together. 
                     </p>
                     <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid3.mp4'} type="video/mp4" controls muted/>
                     <p>
-                    We stir the mixture for a few minutes to ensure the material is mixed properly
+                    We stir the mixture for a few minutes to ensure the material is mixed properly (please imagine the bottle is the mixture cup)
                     </p>
-                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid1.mp4'} type="video/mp4" controls muted/>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid1.mp4'} type="video/mp4" controls loop muted/>
                     <p>
                     The mixture is then put in to a vacuum chamber to remove any air bubbles. This is important as air bubbles can cause defects in the mold. 
                     After turning on the pump and closed the valve, we let the mixture sit as the negative pressure will pull the bubbles from our mixture; we closely monitor the pressure reader, slowly release the valve when the pressure hits 400mbar mark then close the valve again, rinse and repeat until bubbles are clear from the muxture surface.
