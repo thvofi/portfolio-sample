@@ -4,10 +4,10 @@ import { useSection } from './SectionContext';
 import DFimg from "./props/DFimg";
 
 export default function DFab({currentSection}){
-    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14","week15"];
+    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14", "week15", "week16", "week17"];
     const dfa_headlines = ["1.2.3. Documentation & VCS", "4. CAD", "5. CCC", "6. Electronics Production", "7. 3D Printing",
     "8. Embedded Programming", "9. CNC", "10. Electronics Design", "11. Output Devices", "12. Midterm", "13. Input Devices", "14. Molding and Casting",
-    "15. Networking and Communications"];
+    "15. Networking and Communications", "16. Interface and Application", "17. Wildcard Week"];
     const { handleButtonClick } = useSection();
 
     return(
@@ -55,6 +55,15 @@ export default function DFab({currentSection}){
                         <DFHomeButton img="./assets/df/14/thumb.png" 
                         text={dfa_headlines[11]} 
                         currentSection={dfa_sections[11]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/15/thumb.png" 
+                        text={dfa_headlines[12]} 
+                        currentSection={dfa_sections[12]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/16/thumb.png" 
+                        text={dfa_headlines[13]} 
+                        currentSection={dfa_sections[13]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/17/thumb.png" 
+                        text={dfa_headlines[14]} 
+                        currentSection={dfa_sections[14]} handleButtonClick={handleButtonClick}/>
                     </div>
                     
                 </div>
@@ -137,9 +146,94 @@ export default function DFab({currentSection}){
                         <img src="./assets/df/final/img5.png" className="df-img"/>
                     </p>
                     <h4>Design considerations</h4>
+                    <p>
+                        An effect pedal consists of a few key ingredients that support the heart of DSP powering its purpose. In my process of PCB designing, I divided it into 3 catergories:
+                        <ul>
+                            <li>Main board</li>
+                            <li>Interface</li>
+                            <li>Peripherals</li>
+                        </ul>
+                        <img src="./assets/df/final/img6.png" className="df-img"/>
+                        <li>The main board is where the DSP and the audio processing happens, including the microcontroller and its i/os required complementary circuits, including Audio Input/Output buffering, Signal bypass.</li>
+                        <li>The interface includes user interacting elements of the pedal, offering choices to control: enable, disable the effects, and adjust the parameters of the effects. Interface inputs can be anything and traditionally are potentiometers, rotary encoders, switches.</li>
+                        <li>The peripherals are the extra components that support the main board, in my case, ports of the pedal - Audio/MIDI/Power jack.</li>
+                        While main board mostly focus on the technical aspect of the pedal's circuitry, and the peripherals are universally the same (with some cautious choice), the interface is the user-facing side of the pedal, and this is my main focus of design considerations as traditionally,
+                        analog pedals have their interfaces tied to their required parameter controls but digital implementations (with microcontrollers) control the parameters digitally, making their interface extremely flexible and versatile, hence as the designer, I have to make sure the interface is intuitive.<br/>
+                        <b>Big words I used there, but functionally, I just chose how many knobs I want (6).</b>
+                        <ul>
+                            <li>My first consideration is the use of a display. The pros of a display is to me, like putting steroids on pedals. It's the focus of attention, very intuitive and offer visual changes with minimum effort. Its main drawback is adding a level of complexity to my programming skill (working the display library, implement the graphical interface..), taking up at least 4 I/O (common display connection like I2C takes 4, SPI takes 5), and invading real estate of a compact enclosure.<br/>
+                            Alternatively, I thought and tried out another visual signaling system that I design with LED rings around the knobs. When a knob is turned, the ring lights accordingly to the parameter values, creating a lighting feast. However, a) the system here can only applied to a set of rotary encoders as pots (with limited rotation) already display its positional values effortlessly compared to the LEDs;
+                            b) as I'm designing a multi-fx pedal with versatility placed as the priority, displaying variable type of effects required RBG LEDs in combination with a cryptic lighting combination system to distinct and not to mention, increasing physical complexity of LEDs, LED drivers per knob. </li>
+                        </ul>   
+                        <img src="./assets/df/final/img7.png" className="df-img"/>
+                        <ul>
+                            <li>Potentiometers vs Rotary encoders: Initially, I opted to use rotary encoders as I was referencing the design of a Zoom MS-50G with RE knobs and expected having RE would reduce half the pots I wanted for their flexibility; and with their ability to rotate freely, in combination with a digital implementation, controling different parameters on a same knob is somewhat more intuitive (with pots, after setting the first parameter, the second parameter is affected with the knob's state of the first and usually start from there).<br/>
+                            However, such inconvenience is not a deal breaker and it's handled digitally. The drawback of RE is how much physical input that it takes, as it requires at least 2 data input and 2 power input (with another input for a switch), making scaling multiples RE a nightmare, comparing to pots that only require 2 power input and 1 data input. The digital implementation of RE also requires a lot more coding and debugging than pots.
+                            </li>
+                        </ul>
+                        <img src="./assets/df/final/img8.png" className="df-img"/>
+                        <ul>
+                            <li>Switches, buttons: Switches (stateful) are commonly used on analog pedal to enable different states of the fx, while buttons (stateless switch) are more of a digital luxury. My previous PCB build (the Terrarium, designed by PedalPCB) used 4 switches that can controll either 4 parameters x 2 state (8 total states) or 4 switch ^ 2 states (= 16 combination). While this implementation is faithful to its analog inspiration, I don't like them switches and prefer a stateless alternative.<br/>
+                            While buttons is cool and everything, I decided to go for a rotary encoder as the main control function of the digital pedal (inspired by the Apple design team). The Kontrol Knob here will cycle between pages (of options and settings) and its builtin switches make controling fast and easy.</li>
+                        </ul>
+                        <img src="./assets/df/final/img9.png" className="df-img"/>
+                        Overally, I decided to go with:
+                        <ul>
+                            <li>An OLED display: intuitive UI.</li>
+                            <li>6 potentiometers: common limit of knobs that pedals usually go with, especially when I wanted a digital implementation of pedals like EHX Deluxe Memory Man or Roland Space Echo. Depending on the fitting of enclosure, I would go 3 concentric pots to enable full 6 inputs or 3 normal pots and handle inputs in software.</li>
+                            <li>Kontrol Knob Rotary Encoder: supreme mastercontroller, cycles options smoothly. May added LED ring for eye candy.</li>
+                        </ul>
+                        <img src="./assets/df/final/img10.png" className="df-img"/>
+                    </p>
                     <h4>`Building` on the shoulders of giants</h4>
+                    <p>
+                        As the name suggested, I'm not the first person to design a digital multi-fx pedal, in fact I am quite a beginner myself (as stated repeatitively above). Prior to beginning of the project, I've been lurking on the internet for at least a year and found a few projects that I can learn from and build upon. Below is a list of references that I educationally stole ideas from:
+                        <ul>
+                            <li><a href="https://github.com/bkshepherd/DaisySeedProjects">bkshepherd's Daisy Seed Project</a>: Open source hardware design of a Daisy pedal that literally checks all of my boxes. Keith's design is fundamentally how I learn the vital components of a pedal, how they're implemented and where I based and expand my design upon.</li>
+                            <li><a href="https://electro-smith.com/pages/legacy?_pos=1&_sid=792f811b3&_ss=r">Electrosmith's Daisy Petal</a>: (Deprecated) official pedal from the maker of Daisy Seed and it's the (somewhat) standard for a Seed based pedal design.</li>
+                            <li><a href="https://diyelectromusic.wordpress.com/">diyelectromusic (Kevin)</a>: A range of projects that span music, electronics, microcontrollers. Great resource for a variety of audio module (like <a href="https://diyelectromusic.wordpress.com/2023/04/14/xiao-midi-proto-pcb/">MIDI board</a>) implementations to microcontrollers.</li>
+                            <li>Various tutorials found online of pedal design, audio buffering, bypass circuit... to name a few:
+                                <ul>
+                                    <li><a href="https://barbarach.com/using-relays-in-pedals/">Using Relays in Pedals</a></li>
+                                    <li><a href="http://beavisaudio.com/techpages/buffers/">Buffers</a></li>
+                                    <li><a href="https://effectpedalkits.com/blog/effect-pedal-circuits-the-buffer/">Effect pedal circuits: the Buffer (currently down)</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </p>
+                    <h4>How they work? (Under construction May 2024)</h4>
+                    <p>
+                        Bypass
+                        <img src="./assets/df/final/img11.png" className="df-img"/>
+                        Audio Buffering
+                        <img src="./assets/df/final/img12.png" className="df-img"/>
+                        Encoder
+                        <img src="./assets/df/final/img13.png" className="df-img"/>
+                        MIDI
+                        <img src="./assets/df/final/img14.png" className="df-img"/>
+                        Power handling
+                        <img src="./assets/df/final/img15.png" className="df-img"/>
+                    </p>
                     <h4>Breaking into modules</h4>
+                    <p>
+                        Traditionally (yes I use traditionally a lot), at least with analog pedals I've built, it's a single PCB that contains most of the components of the pedal, conveniently with the pots are mounted on the backplate of the PCB. Keith essentially did the same with his Daisy Seed project, but I wanted to improve upon the design and make it modular, breaking the interface and peripheral
+                        into pieces that connect to the main board via thin connectors (referencing from keyboard designs I've seen and guts from commercial pedals online). This way, I can design the main board to be very compact while making the controls and ports to be easily accessible and replaceable.
+                        <img src="./assets/df/final/img16.png" className="df-img"/>
+                        <ul>
+                            <li>Display module</li>
+                            <li>Rotary encoder + LEDs driver module</li>
+                            <li>Control potentiometers module</li>
+                            <li>Footswitch</li>
+                            <li>Various jacks (Panel mounted jack is desirable in this case since quite long and thic 6.35mm TRS metal connector is in and out multiple times and dealing with wear and tear of the jack may burst up PCB solder joints)</li>
+                        </ul>
+                    </p>
                     <h4>Software and creative liberties</h4>
+                    <p>
+                        Skipping forward->.......During week 15 and 16 of DF Studio (mainly week 16: Interface and Application), I learned about the frameworks for creative coding that to me, ties in with Networking and Communications as an great extension, exploring user input parameter indirectly from a host machine. Kris's example explored a web based p5.js implementation that control a vibration motor via a web interface.
+                        Immediately, I saw this as a brilliant expantion to my pedal interface, having a web interface that control the pedal's parameters, providing easy access and visual feedback of the pedal's settings. I've reconsidered to alter the PCB design to include an ESP32 module that connect to the Seed via I2C, while pushing the control interface to the ESP32 to both reduce interuptions for the Seed, and have web control working with physical control.<br/>
+                        The plan at the moment is to figure out a) how to parse data from REST API to ESP32 to Seed through I2C b) how to design a web interface that control the parameters of the pedal.
+                        <img src="./assets/df/final/img17.png" className="df-img"/>
+                    </p>
                     <h2>Side projects that benefit from assignments</h2>
 
                 </div>
@@ -662,6 +756,33 @@ export default function DFab({currentSection}){
                         After we have our silicone mold, we repeat the same process with the liquid plastic. For a 2 sided plastic mold, after filling 2 parts of the mold, we let the plastic cured for half the cured time, then we close the mold and let it cure for the rest of the time with a weight placed on top to tighly shut.
                     </p>
                     <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid5.mp4'} type="video/mp4" controls muted/>
+                </div>
+            )}
+
+            {(currentSection === 'week15') && (
+                <div className="df-docs">
+                    <h1>Input Devices</h1>
+                    <img src="./assets/df/15/thumb.png" className="df-thumb"/>
+                    <h2>Plan</h2>
+
+                </div>
+            )}
+
+            {(currentSection === 'week16') && (
+                <div className="df-docs">
+                    <h1>Input Devices</h1>
+                    <img src="./assets/df/16/thumb.png" className="df-thumb"/>
+                    <h2>Plan</h2>
+
+                </div>
+            )}
+
+            {(currentSection === 'week17') && (
+                <div className="df-docs">
+                    <h1>Input Devices</h1>
+                    <img src="./assets/df/17/thumb.png" className="df-thumb"/>
+                    <h2>Plan</h2>
+
                 </div>
             )}
 
