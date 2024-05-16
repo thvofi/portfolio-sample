@@ -2,6 +2,7 @@ import React from "react"
 import DFHomeButton from "./props/DFHomeButton";
 import { useSection } from './SectionContext';
 import DFimg from "./props/DFimg";
+import ImgModal from "./props/ImgModal";
 
 export default function DFab({currentSection}){
     const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14", "week15", "week16", "week17"];
@@ -10,6 +11,11 @@ export default function DFab({currentSection}){
     "15. Networking and Communications", "16. Interface and Application", "17. Wildcard Week"];
     const { handleButtonClick } = useSection();
 
+    // Select a random wallpaper
+    const wallpapers = ["am", "thesmile", "radiohead", "tlsp"];
+    const randomIndex = Math.floor(Math.random() * wallpapers.length);
+    const randomWallpaper = "./assets/wall/" + wallpapers[randomIndex] + ".png";
+    
     return(
         <div>
             {(currentSection === 'df-home') && (
@@ -79,20 +85,20 @@ export default function DFab({currentSection}){
                     <p>
                         To have a functional live pedal that provide the <u>platform</u> for me to learn, develope, deploy guitar effects processing. It's been on my mind as a cooler Zoom
                         MS-50G as I quite like its experience design but a month ago, Zoom released an upgraded stompbox (after 11 years) called MS-50G+, so it'll be interesting to learn from them.
-                        <img src="./assets/df/final/img0.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img0.png"/>
                     </p>
                     <h3>Stage 1: Hardware rabit holes</h3>
                     <p>
                         I have some surface level ideas for what's coming next, but not enough to form a concrete plan, the purpose of this stage is to research.<br/>
                         In a nutshell, I'm alternating the guitar signal digitally, so at the heart of the project, there is a DSP (Digital Signal Processing).<br/>
-                        <img src="./assets/df/final/img1.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img1.png"/>
                         In the Input Stage of the DSP, the signal must be converted to digital, so there's an ADC (Analog-Digital Converter); and before being converted,
                         the signal is required to be amplified so I'll place an op-amp before the ADC.<br/>
-                        <img src="./assets/df/final/img2.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img2.png"/>
                         For the Output Stage of the DSP, surely it must play sound, and digitally, there are different methods for that. Luxuriously, I'd place a DAC and
                         work with PCM output to inject to the DAC and receive analog signal; without a DAC, digital signal can be output with PWM or PDM. At the end of the
                         signal chain, the output is amplified (and filtered for noise if necessary) so I'll have another op-amp there.<br/>
-                        <img src="./assets/df/final/img3.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img3.png"/>
                         That's that on the surface, but I'm really blurry on how DSP works on hardware. I've been lurking on the internet and
                         the choice of hardware ranges from full-fledged Raspberry Pi to tiny RP2040 to custom DSP hardware; in my assumption, custom DSP hardware is designed to be 
                         efficient and only efficient for DSP, while microcontrollers/CPUs are designed to multi-function, including DSP. Doing a quick look on Google, I found a handful
@@ -142,8 +148,7 @@ export default function DFab({currentSection}){
                     <h3>Stage 2: DSP Platform and Prototyping (to be continued)</h3>
                     <h3>Stage 3: Electronics Design (late April 2024 updates)</h3>
                     <p>
-                        Such a tease!
-                        <img src="./assets/df/final/img5.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img5.png"/>
                     </p>
                     <h4>Design considerations</h4>
                     <p>
@@ -153,7 +158,7 @@ export default function DFab({currentSection}){
                             <li>Interface</li>
                             <li>Peripherals</li>
                         </ul>
-                        <img src="./assets/df/final/img6.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img6.png"/>
                         <li>The main board is where the DSP and the audio processing happens, including the microcontroller and its i/os required complementary circuits, including Audio Input/Output buffering, Signal bypass.</li>
                         <li>The interface includes user interacting elements of the pedal, offering choices to control: enable, disable the effects, and adjust the parameters of the effects. Interface inputs can be anything and traditionally are potentiometers, rotary encoders, switches.</li>
                         <li>The peripherals are the extra components that support the main board, in my case, ports of the pedal - Audio/MIDI/Power jack.</li>
@@ -165,25 +170,25 @@ export default function DFab({currentSection}){
                             Alternatively, I thought and tried out another visual signaling system that I design with LED rings around the knobs. When a knob is turned, the ring lights accordingly to the parameter values, creating a lighting feast. However, a) the system here can only applied to a set of rotary encoders as pots (with limited rotation) already display its positional values effortlessly compared to the LEDs;
                             b) as I'm designing a multi-fx pedal with versatility placed as the priority, displaying variable type of effects required RBG LEDs in combination with a cryptic lighting combination system to distinct and not to mention, increasing physical complexity of LEDs, LED drivers per knob. </li>
                         </ul>   
-                        <img src="./assets/df/final/img7.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img7.png"/>
                         <ul>
                             <li>Potentiometers vs Rotary encoders: Initially, I opted to use rotary encoders as I was referencing the design of a Zoom MS-50G with RE knobs and expected having RE would reduce half the pots I wanted for their flexibility; and with their ability to rotate freely, in combination with a digital implementation, controling different parameters on a same knob is somewhat more intuitive (with pots, after setting the first parameter, the second parameter is affected with the knob's state of the first and usually start from there).<br/>
                             However, such inconvenience is not a deal breaker and it's handled digitally. The drawback of RE is how much physical input that it takes, as it requires at least 2 data input and 2 power input (with another input for a switch), making scaling multiples RE a nightmare, comparing to pots that only require 2 power input and 1 data input. The digital implementation of RE also requires a lot more coding and debugging than pots.
                             </li>
                         </ul>
-                        <img src="./assets/df/final/img8.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img8.png"/>
                         <ul>
                             <li>Switches, buttons: Switches (stateful) are commonly used on analog pedal to enable different states of the fx, while buttons (stateless switch) are more of a digital luxury. My previous PCB build (the Terrarium, designed by PedalPCB) used 4 switches that can controll either 4 parameters x 2 state (8 total states) or 4 switch ^ 2 states (= 16 combination). While this implementation is faithful to its analog inspiration, I don't like them switches and prefer a stateless alternative.<br/>
                             While buttons is cool and everything, I decided to go for a rotary encoder as the main control function of the digital pedal (inspired by the Apple design team). The Kontrol Knob here will cycle between pages (of options and settings) and its builtin switches make controling fast and easy.</li>
                         </ul>
-                        <img src="./assets/df/final/img9.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img9.png"/>
                         Overally, I decided to go with:
                         <ul>
                             <li>An OLED display: intuitive UI.</li>
                             <li>6 potentiometers: common limit of knobs that pedals usually go with, especially when I wanted a digital implementation of pedals like EHX Deluxe Memory Man or Roland Space Echo. Depending on the fitting of enclosure, I would go 3 concentric pots to enable full 6 inputs or 3 normal pots and handle inputs in software.</li>
                             <li>Kontrol Knob Rotary Encoder: supreme mastercontroller, cycles options smoothly. May added LED ring for eye candy.</li>
                         </ul>
-                        <img src="./assets/df/final/img10.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img10.png"/>
                     </p>
                     <h4>`Building` on the shoulders of giants</h4>
                     <p>
@@ -201,24 +206,24 @@ export default function DFab({currentSection}){
                             </li>
                         </ul>
                     </p>
-                    <h4>How they work? (Under construction May 2024)</h4>
+                    <h4>Schematics/How they work? (Under construction May 2024)</h4>
                     <p>
                         Bypass
-                        <img src="./assets/df/final/img11.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img11.png"/>
                         Audio Buffering
-                        <img src="./assets/df/final/img12.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img12.png"/>
                         Encoder
-                        <img src="./assets/df/final/img13.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img13.png"/>
                         MIDI
-                        <img src="./assets/df/final/img14.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img14.png"/>
                         Power handling
-                        <img src="./assets/df/final/img15.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img15.png"/>
                     </p>
                     <h4>Breaking into modules</h4>
                     <p>
                         Traditionally (yes I use traditionally a lot), at least with analog pedals I've built, it's a single PCB that contains most of the components of the pedal, conveniently with the pots are mounted on the backplate of the PCB. Keith essentially did the same with his Daisy Seed project, but I wanted to improve upon the design and make it modular, breaking the interface and peripheral
                         into pieces that connect to the main board via thin connectors (referencing from keyboard designs I've seen and guts from commercial pedals online). This way, I can design the main board to be very compact while making the controls and ports to be easily accessible and replaceable.
-                        <img src="./assets/df/final/img16.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img16.png"/>
                         <ul>
                             <li>Display module</li>
                             <li>Rotary encoder + LEDs driver module</li>
@@ -232,7 +237,26 @@ export default function DFab({currentSection}){
                         Skipping forward->.......During week 15 and 16 of DF Studio (mainly week 16: Interface and Application), I learned about the frameworks for creative coding that to me, ties in with Networking and Communications as an great extension, exploring user input parameter indirectly from a host machine. Kris's example explored a web based p5.js implementation that control a vibration motor via a web interface.
                         Immediately, I saw this as a brilliant expantion to my pedal interface, having a web interface that control the pedal's parameters, providing easy access and visual feedback of the pedal's settings. I've reconsidered to alter the PCB design to include an ESP32 module that connect to the Seed via I2C, while pushing the control interface to the ESP32 to both reduce interuptions for the Seed, and have web control working with physical control.<br/>
                         The plan at the moment is to figure out a) how to parse data from REST API to ESP32 to Seed through I2C b) how to design a web interface that control the parameters of the pedal.
-                        <img src="./assets/df/final/img17.png" className="df-img"/>
+                        <ImgModal img="./assets/df/final/img17.png"/>
+                    </p>
+                    <h4>An use of a multiplexer and DIP switches (V2+) (May 15 updates)</h4>
+                    <p>
+                        <ImgModal img="./assets/df/final/img18.png"/>
+                        <ImgModal img="./assets/df/final/img19.png"/>
+                    </p>
+                    <h4>PCB design</h4>
+                    <p>
+                        <ImgModal img="./assets/df/final/img20.png"/>
+                    </p>
+                    <h3>Final Project Upcoming plans:</h3>
+                    <p>
+                        <ul>
+                            <li>May 8-9: Design choices, V1 schematics deadline</li>
+                            <li>May 15-16: PCB deadline, ordering, BOM; Enclosure design (folding Aluminium sheet, 3D modeling) </li>
+                            <li>May 22-23: System integration, software and basic DSP</li>
+                            <li>May 29-30: Appearance and finalization</li>
+                            <li><b>June 5-6: Presentation Week</b></li>
+                        </ul>
                     </p>
                     <h2>Side projects that benefit from assignments</h2>
 
@@ -246,7 +270,7 @@ export default function DFab({currentSection}){
                         <img src="./assets/avatar.png" className="back" alt="avatar-back"/>
                     </div>
                     
-                    <img src="./assets/wall.png" className="wallpaper" alt="wallpaper"/>
+                    <img src={randomWallpaper} className="wallpaper" alt="wallpaper"/>
 
                     <div className="profile-stats">
                         <span className="profile-header">Thanh Vo<img src="./assets/svg/verify.svg" className="verified" alt="verified"/></span>
@@ -634,7 +658,7 @@ export default function DFab({currentSection}){
                     <h1>Embedded Programming</h1>
                     <img src="./assets/df/8/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
-
+                    <ImgModal img="./assets/df/final/img6.png"/>
                 </div>
             )}
 

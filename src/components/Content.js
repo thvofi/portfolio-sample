@@ -10,6 +10,11 @@ export default function Content(){
 
     const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14", "week15", "week16", "week17"];
 
+    // Select a random wallpaper
+    const wallpapers = ["am", "thesmile", "radiohead", "tlsp"];
+    const randomIndex = Math.floor(Math.random() * wallpapers.length);
+    const randomWallpaper = "./assets/wall/" + wallpapers[randomIndex] + ".png";
+
     return(
         <div className="content">
             {(currentSection === 'home') && (
@@ -20,7 +25,7 @@ export default function Content(){
                         <img src="./assets/avatar.png" className="front" alt="avatar-front"/>
                     </div>
                     
-                    <img src="./assets/wall.png" className="wallpaper" alt="wallpaper"/>
+                    <img src={randomWallpaper} className="wallpaper" alt="wallpaper"/>
 
                     <div className="profile-stats">
                         <span className="profile-header">Thanh Vo<img src="./assets/svg/verify.svg" className="verified" alt="verified"/></span>
@@ -60,7 +65,7 @@ export default function Content(){
                         <img src="./assets/avatar.png" className="back" alt="avatar-back"/>
                     </div>
                     
-                    <img src="./assets/wall.png" className="wallpaper" alt="wallpaper"/>
+                    <img src={randomWallpaper} className="wallpaper" alt="wallpaper"/>
 
                     <div className="profile-stats">
                         <span className="profile-header">Thanh Vo<img src="./assets/svg/verify.svg" className="verified" alt="verified"/></span>
