@@ -2,13 +2,14 @@ import React from "react"
 import './footer.css';
 import SocialsButton from "./props/SocialsButton";
 import { useSection } from './SectionContext';
+import SectionNav from "./SectionNav";
 
 export default function Footer({section}){
     const { currentSection } = useSection();
     const of_sections = ["home", "notifications", "messages", "profile"];
     const df_sections = ["df-home", "df-profile", "df-final"];
 
-    const dfa_sections = ["week123", "week3", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14"];
+    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14", "week15", "week16", "week17"];
 
     return(
         <div>
@@ -46,18 +47,21 @@ export default function Footer({section}){
                     <SocialsButton img="./assets/svg/gitlab.svg" color="#e5543c" text="GitLab" link="https://gitlab.com/thvo-fi"/>
                     <SocialsButton img="./assets/svg/github.svg" color="#24292d" text="GitHub" link="https://github.com/thvofi"/>
                 </div>
-
+                <SectionNav currentSection={currentSection}/>
                 <div className="df-links">
-                    <header>Useful links</header>
-                    <a href="https://aalto.zoom.us/j/69025769608?pwd=ZW5WbHYrbk80S2FCbyt1RGhZZGVSQT09">Local Zoom</a>
-                    <a href="https://fabacademy.org/2024/video.html">Global Zoom</a>
-                    <a href="https://fabacademy.org/2024/">FabAcademy 2024</a>
-                    <a href="https://pub.fabcloud.io/tutorials/index.html">FabAcademy - Tutorials</a>
-                    <a href="https://wiki.aalto.fi/collector/pages.action?key=AF">Wiki.Aalto Fablab</a>
-                    <a href="https://www.youtube.com/@aaltofablab3504/videos">Aalto Fablab Youtube</a>
-                    <a href="https://vimeo.com/academany">FabAcademy Vimeo</a>
-                    <a href="https://gitlab.com/aaltofablab/digital-fabrication-2024">Check my classmates out!</a>
+                    <h3>Useful links</h3>
+                    <ul>
+                        <li><a href="https://aalto.zoom.us/j/69025769608?pwd=ZW5WbHYrbk80S2FCbyt1RGhZZGVSQT09">🐈 Local Zoom 🐈</a></li>
+                        <li><a href="https://fabacademy.org/2024/video.html">🌐 Global Zoom 🌐</a></li>
+                        <li><a href="https://fabacademy.org/2024/">🔨 FabAcademy 2024 🔧</a></li>
+                        <li><a href="https://pub.fabcloud.io/tutorials/index.html">🔧 FabAcademy - Tutorials 🔨</a></li>
+                        <li><a href="https://wiki.aalto.fi/collector/pages.action?key=AF">🅰❗ Wiki.Aalto.Fablab 🅰❓</a></li>
+                        <li><a href="https://www.youtube.com/@aaltofablab3504/videos">📺 Aalto Fablab Youtube 📺</a></li>
+                        <li><a href="https://vimeo.com/academany">🎥 FabAcademy Vimeo 🎥</a></li>
+                        <li><a href="https://gitlab.com/aaltofablab/digital-fabrication-2024">🔥 Check my classmates out! 🔥</a></li>
+                    </ul>
                 </div>
+                
             </div>
             )}
         </div>

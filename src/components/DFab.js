@@ -3,6 +3,8 @@ import DFHomeButton from "./props/DFHomeButton";
 import { useSection } from './SectionContext';
 import DFimg from "./props/DFimg";
 import ImgModal from "./props/ImgModal";
+import UpButton from "./UpButton";
+import SectionNav from "./SectionNav";
 
 export default function DFab({currentSection}){
     const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14", "week15", "week16", "week17"];
@@ -19,7 +21,7 @@ export default function DFab({currentSection}){
     return(
         <div>
             {(currentSection === 'df-home') && (
-                <div>
+                <div className="df-home">
                     <h1>Home</h1>
                     <img src="./assets/df/home.png" className="df-thumb"/>
                     <h2>Hi! I'm Thanh Vo and this is my Digital Fabrication documentation page.</h2>
@@ -76,7 +78,7 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'df-final') && (
-                <div className="df-docs">
+                <div className="df-final df-docs">
                     <h1>Final project</h1>
                     <img src="./assets/df/final/final.png" className="df-thumb"/>
                     <h2>Multi-fx digital guitar pedal</h2>
@@ -224,6 +226,7 @@ export default function DFab({currentSection}){
                         Traditionally (yes I use traditionally a lot), at least with analog pedals I've built, it's a single PCB that contains most of the components of the pedal, conveniently with the pots are mounted on the backplate of the PCB. Keith essentially did the same with his Daisy Seed project, but I wanted to improve upon the design and make it modular, breaking the interface and peripheral
                         into pieces that connect to the main board via thin connectors (referencing from keyboard designs I've seen and guts from commercial pedals online). This way, I can design the main board to be very compact while making the controls and ports to be easily accessible and replaceable.
                         <ImgModal img="./assets/df/final/img16.png"/>
+                        <ImgModal img="./assets/df/final/img16-2.png"/>
                         <ul>
                             <li>Display module</li>
                             <li>Rotary encoder + LEDs driver module</li>
@@ -259,12 +262,12 @@ export default function DFab({currentSection}){
                         </ul>
                     </p>
                     <h2>Side projects that benefit from assignments</h2>
-
+                    <UpButton />
                 </div>
             )}
 
             {(currentSection === 'df-profile') && (
-                <div className="profile">
+                <div className="df-profile profile">
                     <div className="avatar">
                         <img src="./assets/brand.png" className="front" alt="avatar-front"/>
                         <img src="./assets/avatar.png" className="back" alt="avatar-back"/>
@@ -290,7 +293,7 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week123') && (
-                <div className="df-docs">
+                <div className="week123 df-docs">
                     <h1>Principles and Practices, Project Management</h1>
                     <img src="./assets/df/123/thumb.png" className="df-thumb"/>
                     <h2>Documentation</h2>
@@ -447,7 +450,7 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week4') && (
-                <div className="df-docs">
+                <div className="week4 df-docs">
                     <h1>Computer Aided Design</h1>
                     <img src="./assets/df/4/thumb.png" className="df-thumb"/>
                     <h2>Illustrator</h2>
@@ -509,7 +512,7 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week5') && (
-                <div className="df-docs">
+                <div className="week5 df-docs">
                     <h1>Computer-Controlled Cutting</h1>
                     <img src="./assets/df/5/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
@@ -550,7 +553,7 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week6') && (
-                <div className="df-docs">
+                <div className="week6 df-docs">
                     <h1>Electronics Production</h1>
                     <img src="./assets/df/6/thumb.png" className="df-thumb"/>
                     <h2>Preparing</h2>
@@ -588,7 +591,7 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week7') && (
-                <div className="df-docs">
+                <div className="week7 df-docs">
                     <h1>3D Scanning and Printing</h1>
                     <img src="./assets/df/7/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
@@ -654,7 +657,7 @@ export default function DFab({currentSection}){
                 </div>
             )}
             {(currentSection === 'week8') && (
-                <div className="df-docs">
+                <div className="week8 df-docs">
                     <h1>Embedded Programming</h1>
                     <img src="./assets/df/8/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
@@ -663,7 +666,7 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week9') && (
-                <div className="df-docs">
+                <div className="week9 df-docs">
                     <h1>Computer Controlled Machining</h1>
                     <img src="./assets/df/9/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
@@ -672,7 +675,7 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week10') && (
-                <div className="df-docs">
+                <div className="week10 df-docs">
                     <h1>Electronics Design</h1>
                     <img src="./assets/df/10/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
@@ -681,7 +684,7 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week11') && (
-                <div className="df-docs">
+                <div className="week11 df-docs">
                     <h1>Output Devices</h1>
                     <img src="./assets/df/11/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
@@ -690,14 +693,14 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week12') && (
-                <div className="df-docs">
+                <div className="week12 df-docs">
                     <h1>Midterm</h1>
                     <img src="./assets/df/12/thumb.gif" className="df-img"/>
                 </div>
             )}
 
             {(currentSection === 'week13') && (
-                <div className="df-docs">
+                <div className="week13 df-docs">
                     <h1>Input Devices</h1>
                     <img src="./assets/df/13/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
@@ -706,7 +709,7 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week14') && (
-                <div className="df-docs">
+                <div className="week14 df-docs">
                     <h1>Molding and Casting</h1>
                     <img src="./assets/df/14/thumb.png" className="df-thumb"/>
                     <h2>Group Assignment</h2>
@@ -784,8 +787,8 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week15') && (
-                <div className="df-docs">
-                    <h1>Input Devices</h1>
+                <div className="week15 df-docs">
+                    <h1>Placeholder</h1>
                     <img src="./assets/df/15/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
 
@@ -793,8 +796,8 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week16') && (
-                <div className="df-docs">
-                    <h1>Input Devices</h1>
+                <div className="week16 df-docs">
+                    <h1>Placeholder</h1>
                     <img src="./assets/df/16/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
 
@@ -802,8 +805,8 @@ export default function DFab({currentSection}){
             )}
 
             {(currentSection === 'week17') && (
-                <div className="df-docs">
-                    <h1>Input Devices</h1>
+                <div className="week17 df-docs">
+                    <h1>Placeholder</h1>
                     <img src="./assets/df/17/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
 
