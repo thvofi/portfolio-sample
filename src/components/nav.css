@@ -52,6 +52,13 @@
 .nav button:hover .nav-icon {
     filter: invert(40%) sepia(95%) saturate(2899%) hue-rotate(180deg) brightness(98%) contrast(103%);
 }
+
+.dropdown {
+    max-height: 50vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
 @media (max-width: 683px) {
     .nav {
         display: none;

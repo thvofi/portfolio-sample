@@ -8,7 +8,7 @@ export default function Content(){
     const of_sections = ["home", "notifications", "messages", "profile"];
     const df_sections = ["df-home", "df-profile", "df-final"];
 
-    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14", "week15", "week16", "week17"];
+    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14", "week15", "week16", "week17", "week18"];
 
     // Select a random wallpaper
     const wallpapers = ["am", "thesmile", "radiohead", "tlsp"];

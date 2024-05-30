@@ -5,12 +5,15 @@ import DFimg from "./props/DFimg";
 import ImgModal from "./props/ImgModal";
 import UpButton from "./UpButton";
 import SectionNav from "./SectionNav";
+import P5Wrapper from './P5Wrapper';
+import sketch from './p5-sketch/sketch';
+import kris from "./p5-sketch/kris";
 
 export default function DFab({currentSection}){
-    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14", "week15", "week16", "week17"];
+    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14", "week15", "week16", "week17", "week18"];
     const dfa_headlines = ["1.2.3. Documentation & VCS", "4. CAD", "5. CCC", "6. Electronics Production", "7. 3D Printing",
     "8. Embedded Programming", "9. CNC", "10. Electronics Design", "11. Output Devices", "12. Midterm", "13. Input Devices", "14. Molding and Casting",
-    "15. Networking and Communications", "16. Interface and Application", "17. Wildcard Week"];
+    "15. Networking and Communications", "16. Interface and Application", "17. Wildcard Week", "18. System Integration"];
     const { handleButtonClick } = useSection();
 
     // Select a random wallpaper
@@ -72,6 +75,9 @@ export default function DFab({currentSection}){
                         <DFHomeButton img="./assets/df/17/thumb.png" 
                         text={dfa_headlines[14]} 
                         currentSection={dfa_sections[14]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/18/thumb.png" 
+                        text={dfa_headlines[15]} 
+                        currentSection={dfa_sections[15]} handleButtonClick={handleButtonClick}/>
                     </div>
                     
                 </div>
@@ -314,7 +320,7 @@ export default function DFab({currentSection}){
                         I <s>hate</s> don't enjoy coding and <s>hate</s> don't enjoy talking about it even more, but to summarize my experience: Build js modules from the root/homepage like a tree and strategically classify every 
                         elements to save yourself when styling.
                     </p>
-                    <img src="./assets/df/123/img1.png" className="df-img"/>
+                    <ImgModal img="./assets/df/123/img1.png"/>
                     <p>
                         I followed my plan and break the Page() down to 3 main components: NavigateBar(), Content(), Footer() which are js functions that can be reused to render
                         <ul>
@@ -347,7 +353,7 @@ export default function DFab({currentSection}){
                         After making all that, I came to realization that packing the page into functions is a good and a handy way to organize it, but solving the CSS madness I faced previously could have been
                         done way easier by (not learning React) just labeling the elements with proper organized class names, which indeed I did manually hand-styled all of the page. So that's a solid advice for anyone who wants to
                         take on vanilla css: classify your elements and style them with a class system.
-                        <img src="./assets/df/123/img2.png" className="df-img"/>
+                        <ImgModal img="./assets/df/123/img2.png"/>
                         I intentionally didn't include any details of the coding process here, since using React is irrelevant and unnecessary for documentation, 
                         but recreating the page exactly with vanilla html/css is definitely achiveable and should be done before jumping on the React train.<br/>
                         At this point, the page is roughly hand styled, not accounting for:
@@ -418,12 +424,12 @@ export default function DFab({currentSection}){
                     <h3>Handbrake</h3>
                     <p>
                         Usually when I batch process videos, I'd use Handbrake as it's more user-friendly and has a better UI for batch processing. I found the Very Fast 720p30 preset to be a good balance between quality and size. Depending on the video, I'd adjust the crf from 23 to 28.
-                        <img src="./assets/df/123/img3.png" className="df-img"/>
+                        <ImgModal img="./assets/df/123/img3.png"/>
                     </p>
                     <h3>Watermarking</h3>
                     <p>
                         Now, as an amateur optimizer and a semi-professional parodist, I wanted to capture the soul of the multimedia hosted on this page, so now, I try to add my watermark to necessary images and videos.<br/>
-                        <img src="./assets/watermark.png" className="df-img"/>
+                        <ImgModal img="./assets/watermark.png"/>
                         I looked up a few ways to do it, a few trials and errors later and I settle with these 2 commands:
                         <code>magick composite -gravity southeast -geometry 20%x20%+10+10 watermark.png input.png output.png</code>
                         <code>ffmpeg -i input.mp4 -i watermark.png -filter_complex "[1][0]scale2ref=w=oh*mdar:h=ih*0.05[logo][video];[video][logo]overlay=W-w-10:H-h-10" -c:a copy output.mp4</code>
@@ -456,56 +462,56 @@ export default function DFab({currentSection}){
                     <h2>Illustrator</h2>
                     <p>
                         I've been using Illustrator for a while, mainly for vector graphics and logo design. I'm not a professional, but I can get around with the pen tool and the shape tool. For the task at hand, I used Illustrator to create an engraving face plate for my pedal project.
-                        <img src="./assets/df/4/pedal-face.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/pedal-face.png"/>
                     </p>
                     <h2>Photoshop</h2>
                     <p>
                         I'm no stranger to Photoshop, one of my finest work can be found in my <u>About me</u> page. Below is a quick demonstration of my workflow working with screenshots for the documentation.
-                        <img src="./assets/df/4/pts.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/pts.png"/>
                         Like every image editing tool, 5 most basic tools are: selection, crop, move, text and brush. I mainly enjoy using red brush and text to annotate my images. One feature of Photoshop that it is layer based, so it's easy to manage an image component and editing process can be non-destructive. Photoshop also features a handy resize tool, which can be found in the Image > Image Size menu, here I can resize the image to a desired dimension and resolution.
                     </p>
                     <h2>Fusion360</h2>
                     <p>
                         I started with an outline sketch using the dimension tool to quickly match the width and height of the shell.
-                        <img src="./assets/df/4/img1.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img1.png"/>
                         Then I extruded the sketch to the desired z-height and used shell tool to hollow the shell with 5mm thickness.
-                        <img src="./assets/df/4/img2.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img2.png"/>
                         I needed to make more sketch on the top of the shell to add holes for the potentiometers and switches. At that point, I realized since I'm making it parametric, I added my user parameters to the sketch, in this case, the potentiometer's dimensions.
-                        <img src="./assets/df/4/img3.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img3.png"/>
                         I added construction lines and used dimension tool to align the holes center accordingly. The distance between the top edge to the first row of holes should be large enough to fit the potentiometers so I defined the distance as the potentiometer's radius.
-                        <img src="./assets/df/4/img4.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img4.png"/>
                         Between 2 rows of holes, I defined the distance as the potentiometer's height; and the distance between the side holes and the side edges is also the potentiometer's radius.
-                        <img src="./assets/df/4/img5.png" className="df-img"/>
-                        <img src="./assets/df/4/img6.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img5.png"/>
+                        <ImgModal img="./assets/df/4/img6.png"/>
                         After getting all the intersections, I added the holes sketcch with circle tool. Here I also defined the diameter to match the potentiometer's shaft parameter.
-                        <img src="./assets/df/4/img7.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img7.png"/>
                         At this moment, I forgot to take account of the shell thickness, so I added the thickness parameter and modified the construction line to add thickness to spacing. I used measure tool to check the distance between 2 pots to confirm the pots weren't overlapping whick they weren't (18mm > 17mm).
-                        <img src="./assets/df/4/img8.png" className="df-img"/>
-                        <img src="./assets/df/4/img9.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img8.png"/>
+                        <ImgModal img="./assets/df/4/img9.png"/>
                         To further be reminded of the shell thickness, I used the offset tool to create a thickness contruction outline inside the shape.
-                        <img src="./assets/df/4/img10.png" className="df-img"/>
-                        <img src="./assets/df/4/img12.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img10.png"/>
+                        <ImgModal img="./assets/df/4/img12.png"/>
                         I continue with the foot switch, I added the switch's parameters and sketch its outline as contruction. I made the hole with the center point then mirrored it to the other side.
-                        <img src="./assets/df/4/img13.png" className="df-img"/>
-                        <img src="./assets/df/4/img14.png" className="df-img"/>
-                        <img src="./assets/df/4/img15.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img13.png"/>
+                        <ImgModal img="./assets/df/4/img14.png"/>
+                        <ImgModal img="./assets/df/4/img15.png"/>
                         I also added a screen to the lower half of the pedal and added a rectangle accordingly to the screen's dimensions.
-                        <img src="./assets/df/4/img16.png" className="df-img"/>
-                        <img src="./assets/df/4/img17.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img16.png"/>
+                        <ImgModal img="./assets/df/4/img17.png"/>
                         Finally, I added the LED holes and the sketch is ready to be extrude.
-                        <img src="./assets/df/4/img18.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img18.png"/>
                         I selected all the holes and extrude them to the shell's thickness, with opertation set to cut.
-                        <img src="./assets/df/4/img19.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img19.png"/>
                         Here is the final result of the shell.
-                        <img src="./assets/df/4/img20.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img20.png"/>
                         Since it's a software week, I wanted to try out the rendering feature of Fusion360, so I experimented with a few materials and rendered the shell.
-                        <img src="./assets/df/4/img21.png" className="df-img"/>
-                        <img src="./assets/df/4/img22.png" className="df-img"/>
-                        <img src="./assets/df/4/img23.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img21.png"/>
+                        <ImgModal img="./assets/df/4/img22.png"/>
+                        <ImgModal img="./assets/df/4/img23.png"/>
                         Quick 75% quality render of the pedal shell:
-                        <img src="./assets/df/4/img11.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img11.png"/>
                         After modeling the shell, I realized I accidentally messed up the shell thickness from 2mm to 5mm, so unintentionally, I had the perfect demonstration of one of the benefits of parametric modeling: I only needed to change the thickness parameter and the whole model magically updated accordingly.
-                        <img src="./assets/df/4/img24.png" className="df-img"/>
+                        <ImgModal img="./assets/df/4/img24.png"/>
                         <video width="560" src={process.env.PUBLIC_URL + '/assets/df/4/vid1.mp4'} type="video/mp4" controls/>
                     </p>
                 </div>
@@ -523,31 +529,31 @@ export default function DFab({currentSection}){
                     </p>
                     <h2>Design</h2>
                     <p>
-                        <img src="./assets/df/5/img1.png" className="df-img"/>
-                        <img src="./assets/df/5/img2.png" className="df-img"/>
-                        <img src="./assets/df/5/img3.png" className="df-img"/>
-                        <img src="./assets/df/5/img4.png" className="df-img"/>
-                        <img src="./assets/df/5/img5.png" className="df-img"/>
+                        <ImgModal img="./assets/df/5/img1.png"/>
+                        <ImgModal img="./assets/df/5/img2.png"/>
+                        <ImgModal img="./assets/df/5/img3.png"/>
+                        <ImgModal img="./assets/df/5/img4.png"/>
+                        <ImgModal img="./assets/df/5/img5.png"/>
                         Parameters:
-                        <img src="./assets/df/5/img6.png" className="df-img"/>
+                        <ImgModal img="./assets/df/5/img6.png"/>
                         Press-fit joint thickness:
-                        <img src="./assets/df/5/img7.png" className="df-img"/>
+                        <ImgModal img="./assets/df/5/img7.png"/>
                         Offset joint with kerf:
-                        <img src="./assets/df/5/img8.png" className="df-img"/>
+                        <ImgModal img="./assets/df/5/img8.png"/>
                         Export 2D sketch to DXF:
-                        <img src="./assets/df/5/img9.png" className="df-img"/>
+                        <ImgModal img="./assets/df/5/img9.png"/>
                     </p>
                     <h2>Cutting</h2>
                     <p>
                         Mika's documentation page can be found <a href="https://mikajarvi.gitlab.io/digital-fabrication/laser-cutting.html">here</a>.<br/>
                         20x20mm squares to calculate kerf:
-                        <img src="./assets/df/5/img10.png" className="df-img"/>
+                        <ImgModal img="./assets/df/5/img10.png"/>
                         kerf = (100 - 99.2)/5 = 0.16mm
-                        <img src="./assets/df/5/img11.png" className="df-img"/>
+                        <ImgModal img="./assets/df/5/img11.png"/>
                         Cutting (sorry, no video, I forgot to take one):
-                        <img src="./assets/df/5/img12.png" className="df-img"/>
+                        <ImgModal img="./assets/df/5/img12.png"/>
                         Result:
-                        <img src="./assets/df/5/img13.png" className="df-img"/>
+                        <ImgModal img="./assets/df/5/img13.png"/>
                     </p>
                 </div>
             )}
@@ -581,9 +587,9 @@ export default function DFab({currentSection}){
                     <p>
                         During my first attempt, I noticed the text engrave was too big while traces were too small, which were strange as Burak's intruction was using 4 passes and I used 3. I tried making a second board and this time, it turned out fine. My suspicion is that when setting the z-axis, for the paper calibration of the MDX-40, I punctured the paper too hard and the z-axis was deeper than it should be.<br/>
                         Before and after:
-                        <img src="./assets/df/6/img1.png" className="df-img"/>
+                        <ImgModal img="./assets/df/6/img1.png"/>
                         Soldered:
-                        <img src="./assets/df/6/img2.png" className="df-img"/>
+                        <ImgModal img="./assets/df/6/img2.png"/>
                         I was careful enough to test the board continuity after soldering, hence the code worked fine on the first try.
                         <video width="560" src={process.env.PUBLIC_URL + '/assets/df/6/vid1.mp4'} type="video/mp4" controls/>
                     </p>
@@ -598,9 +604,9 @@ export default function DFab({currentSection}){
                     <p>
                         Last semester I got my ears 3D scanned and I've been planning to make custom IEMs for myself using a SLA printer. Honestly, I'm quite clueless on working and modeling scanned mesh, so to start
                         small, I wanted to reshell a pair of cheap IEMs that I have. Introducing: the Moondrop Chu 2.  
-                        <img src="./assets/df/7/img1.png" className="df-img"/>
+                        <ImgModal img="./assets/df/7/img1.png"/>
                         It's a pair of $20 IEMs that sound good for the price and had a really simple construction: single dynamic driver, 2-pin connector, and a simple shell. I disassembled it, took some measurements and started modeling.
-                        <img src="./assets/df/7/img2.png" className="df-img"/>
+                        <ImgModal img="./assets/df/7/img2.png"/>
                     </p>
                     <h2>Mesh working</h2>
                     <p>
@@ -620,7 +626,7 @@ export default function DFab({currentSection}){
                     <h3>4. Nozzle cut</h3>
                     <p>It's important for me to cut the nozzle closest to the measured length since it's the only acoustical reference I have and I don't plan to mess with the driver. I used the measuring tool in Meshmixer to get the 5mm dimension and tried my best to align for an optimal cut.</p>
                     <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/4 Nozzle Cut.mp4'} type="video/mp4" controls muted/>
-                    <img src="./assets/df/7/img3.png" className="df-img"/>
+                    <ImgModal img="./assets/df/7/img3.png"/>
                     <h3>5. Smooth and offset</h3>
                     <p>
                         After getting the rough shape, I first needed to invert the mesh as the original scan was open, not closed mesh; when the fill mesh applied after cutting, the mesh was inside out.
@@ -628,7 +634,7 @@ export default function DFab({currentSection}){
                     </p>
                     <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/5.1 Smooth Nozzle.mp4'} type="video/mp4" controls muted/>
                     <video width="560" src={process.env.PUBLIC_URL + '/assets/df/7/5.2 Smooth Offset.mp4'} type="video/mp4" controls muted/>
-                    <img src="./assets/df/7/img4.png" className="df-img"/>
+                    <ImgModal img="./assets/df/7/img4.png"/>
                     <p>The model fit very well as expected, although there are needed improvements to it: the top and bottom can be reduced to have more rounded edges and also improve the overall shape and stability.</p>
                     <h3>6. Remesh</h3>
                     <p>The model's remeshed to a finer 'resolution' so that it's a little easier to select and sculpt.</p>
@@ -648,7 +654,7 @@ export default function DFab({currentSection}){
                         As far as it goes right now, the shape doesn't look horrible, but I noticed a) the extrusion surface I selected looked very janky and in a weird shape, b) I couldn't sculpt the transition of the extrusion correctly, as
                         it's looking very blocky and unnatural.
                     </p>
-                    <img src="./assets/df/7/img5.png" className="df-img"/>
+                    <ImgModal img="./assets/df/7/img5.png"/>
                     <p>
                         My next step/approach would be to rework on the extrusion to make the shape slimmer and more natural, I'd only extrude the connector and have its position tilted.
                         Then I can add the connector to the model, hollow it out then print it out again to start assembling.
@@ -661,7 +667,6 @@ export default function DFab({currentSection}){
                     <h1>Embedded Programming</h1>
                     <img src="./assets/df/8/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
-                    <ImgModal img="./assets/df/final/img6.png"/>
                 </div>
             )}
 
@@ -695,7 +700,7 @@ export default function DFab({currentSection}){
             {(currentSection === 'week12') && (
                 <div className="week12 df-docs">
                     <h1>Midterm</h1>
-                    <img src="./assets/df/12/thumb.gif" className="df-img"/>
+                    <ImgModal img="./assets/df/12/thumb.gif"/>
                 </div>
             )}
 
@@ -717,7 +722,7 @@ export default function DFab({currentSection}){
                     <h5>Sorry Mikko, until I figure out how to properly fix my codes, you might have to redirect to the whole website as the group assignment</h5>
                     <p>
                         For the final week of Digital Fabrication II, we are introduced to Molding and Casting.<br/> We start by entering the special molding and casting area, where you navigate around to find materials and tools below:
-                        <img src="./assets/df/14/img1.png" className="df-img"/>
+                        <ImgModal img="./assets/df/14/img1.png"/>
                     </p>
                     <h3>Materials</h3>
                     <p>
@@ -728,22 +733,22 @@ export default function DFab({currentSection}){
                             <li><b>Smooth-Cast 305</b>: Liquid Plastic</li>
                         </ul>
                         By looking at the boxes' tags, we can find the materials' names to look up for more information on Smooth-On website, while roughly anticipate their properties and usage.
-                        <img src="./assets/df/14/umb_mold.png" className="df-img"/>
-                        <img src="./assets/df/14/umb_food.png" className="df-img"/>
-                        <img src="./assets/df/14/umb_plastic.png" className="df-img"/>
+                        <ImgModal img="./assets/df/14/umb_mold.png"/>
+                        <ImgModal img="./assets/df/14/umb_food.png"/>
+                        <ImgModal img="./assets/df/14/umb_plastic.png"/>
                         <b>Pot Life:</b> the time from mixing the two packs together to the point at which the mixed paint is no longer useable<br/><b>Cure Time:</b> the time it takes for the material to fully cure after being poured into the mold.
                     </p>
                     <h4>Datasheets</h4>
                     <p>
                     Reading the materials' datasheets is absolutely crucial to understand the materials' properties and how to work with them. Smooth-On offers a lot of information on their website, including datasheets, technical bulletins, and instructional videos; while including 2 copies of the datasheets in the box, one highly detailed safety datasheet and one more user-friendly datasheet.<br/>
                     Here I've included le user-friendlie datasheets for the materials we are working with. We can grasp good overview on the material, its technical properties, and how to work with it; pay special attention to <b>Safety First!</b> red headline to notice the material safety precautions. 
-                        <img src="./assets/df/14/mold_star.png" className="df-img"/>
+                        <ImgModal img="./assets/df/14/mold_star.png"/>
                         Mold Star silicone rubber is the material we use to make our molds. The mixing ratio is 1A:1B by volume or weight. We're using "Mold Star 15-SLOW", which has 50 minutes of pot life, and 4 hours of curing time. The cured end result is a soft, strong rubber. It can be used to cast materials up to 232 degrees celcius.<br/>
                         When handling the material we must wear gloves. Operations should be done in room temperature.
-                        <img src="./assets/df/14/food_safe.png" className="df-img"/>
+                        <ImgModal img="./assets/df/14/food_safe.png"/>
                         Sorta-Clear FOOD SAFE silicone rubber is a translucent material used to make molds, mainly used for applications where it is important to see the cast material inside the mold. Works similary as Mold Star, but its special quirk is being Food Safe. We're using "Sorta-Clear 37", which has 25 minutes of pot life, and 4 hours of curing time. It has a mixing ratio of 1A:1B by volume<br/>
                         When handling the material we must wear gloves. Operations should be done in room temperature. 
-                        <img src="./assets/df/14/plastic.png" className="df-img"/>
+                        <ImgModal img="./assets/df/14/plastic.png"/>
                         Smooth-Cast liquid plastic is the material which we use to cast. It produces a bright, white, hard plastic when cured. We are using "SmoothCast 305", which has 7 minutes of pot life, and 30 minutes of curing time. It has a mixing ratio of 1A:1B by volume, or 100A:90B by weight.<br/>
                         When handling the material we must wear gloves. Operations should be done in room temperature. 
                     </p>
@@ -774,12 +779,12 @@ export default function DFab({currentSection}){
                     <p>
                     The mixture is then put in to a vacuum chamber to remove any air bubbles. This is important as air bubbles can cause defects in the mold. 
                     After turning on the pump and closed the valve, we let the mixture sit as the negative pressure will pull the bubbles from our mixture; we closely monitor the pressure reader, slowly release the valve when the pressure hits 400mbar mark then close the valve again, rinse and repeat until bubbles are clear from the muxture surface.
-                    <img src="./assets/df/14/pressure.png" className="df-img"/>
+                    <ImgModal img="./assets/df/14/pressure.png"/>
                     </p>
                     <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid4.mp4'} type="video/mp4" controls muted/>
                     <p>
                         Then, we pour the mixture into the mold box, and let it cure for the specified time. The key to a bubble free pouring job is to pour it from a height, keeping stream as a tiny string or tiny droplets.
-                        <img src="./assets/df/14/mold.png" className="df-img"/>
+                        <ImgModal img="./assets/df/14/mold.png"/>
                         After we have our silicone mold, we repeat the same process with the liquid plastic. For a 2 sided plastic mold, after filling 2 parts of the mold, we let the plastic cured for half the cured time, then we close the mold and let it cure for the rest of the time with a weight placed on top to tighly shut.
                     </p>
                     <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid5.mp4'} type="video/mp4" controls muted/>
@@ -788,28 +793,81 @@ export default function DFab({currentSection}){
 
             {(currentSection === 'week15') && (
                 <div className="week15 df-docs">
-                    <h1>Placeholder</h1>
+                    <h1>Networking</h1>
                     <img src="./assets/df/15/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
-
+                    
                 </div>
             )}
 
             {(currentSection === 'week16') && (
                 <div className="week16 df-docs">
-                    <h1>Placeholder</h1>
+                    <h1>Interface and Application Programming</h1>
                     <img src="./assets/df/16/thumb.png" className="df-thumb"/>
-                    <h2>Plan</h2>
+                    <h2>Demonstration</h2>
+                    <h5>(Special thanks to ChatGPT for not taking over the planet)</h5>
+                    <P5Wrapper sketch={sketch} />
+                    <h2>Anatomy of Kris p5.js example</h2>
+ 
+                    <h2>Implementation</h2>
+                    <h3>p5.js</h3>
 
+                    <h3>REST API</h3>
+
+                    <h2>React and p5.js</h2>
+
+                    <h3>p5 Wrapper</h3>
+
+                    <h3>js components</h3>
                 </div>
             )}
 
             {(currentSection === 'week17') && (
                 <div className="week17 df-docs">
-                    <h1>Placeholder</h1>
+                    <h1>Wildcard</h1>
                     <img src="./assets/df/17/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
+                    
+                </div>
+            )}
 
+            {(currentSection === 'week18') && (
+                <div className="week18 df-docs">
+                    <h1>System Integration</h1>
+                    <img src="./assets/df/18/thumb.png" className="df-thumb"/>
+                    <h2>PCB Design</h2>
+                    <h3>Components/Footprint selection</h3>
+                    <p>
+                        <ImgModal img="./assets/df/18/img1.png"/>
+                    </p>
+                    <h4>Custom footprint for potentiometer</h4>
+                    <h3>PCB Manufacturing preperation</h3>
+                    <p>
+                        <ImgModal img="./assets/df/18/img2.png"/>
+                        <ImgModal img="./assets/df/18/img3.png"/>
+                        <ImgModal img="./assets/df/18/dfront.png"/>
+                        <ImgModal img="./assets/df/18/dback.png"/>
+                    </p>
+                    <h3>PCB Ordering and pricing</h3>
+                    <h4>JLCPCB (board and stencil)</h4>
+                    <p>
+                        <ImgModal img="./assets/df/18/img4.png"/>
+                        <ImgModal img="./assets/df/18/img5.png"/>
+                    </p>
+                    <h4>JLCPCB (preassembled)</h4>
+                    <p>
+                        <ImgModal img="./assets/df/18/img6.png"/>
+                        <ImgModal img="./assets/df/18/img7.png"/>
+                        <ImgModal img="./assets/df/18/img8.png"/>
+                    </p>
+                    <h4>My choice: PCBWay (board) + LCSC (components)</h4>
+                    <p>
+                        <ImgModal img="./assets/df/18/img10.png"/>
+                        <ImgModal img="./assets/df/18/img9.png"/>
+                        <ImgModal img="./assets/df/18/img11.png"/>
+                    </p>
+                    <h3>3D Model</h3>
+                    <h3>Enclosure</h3>
                 </div>
             )}
 
