@@ -1,5 +1,7 @@
 .right-bar {
-    
+    max-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 .socials button{
     width: 340px;
@@ -47,6 +49,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 320px;
     overflow-y: auto;
+    scrollbar-width: none;
 }
 .df-links ul {
     list-style: none;
@@ -79,6 +82,7 @@
     max-height: 50vh;
     width: 320px;
     overflow-y: auto;
+    scrollbar-width: none;
 }
   
 .side-navigation ul {

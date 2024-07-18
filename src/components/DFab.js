@@ -10,14 +10,14 @@ import sketch from './p5-sketch/sketch';
 import kris from "./p5-sketch/kris";
 
 export default function DFab({currentSection}){
-    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14", "week15", "week16", "week17", "week18"];
+    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week10", "week12", "week10", "week14", "week15", "week16", "week17", "week18", "week19", "week20"];
     const dfa_headlines = ["1.2.3. Documentation & VCS", "4. CAD", "5. CCC", "6. Electronics Production", "7. 3D Printing",
-    "8. Embedded Programming", "9. CNC", "10. Electronics Design", "11. Output Devices", "12. Midterm", "13. Input Devices", "14. Molding and Casting",
-    "15. Networking and Communications", "16. Interface and Application", "17. Wildcard Week", "18. System Integration"];
+    <mark>8. Embedded Programming</mark>, <mark>9. CNC</mark>, <mark>10. Electronics Design</mark>, <mark>11. Output Devices</mark>, "12. Midterm", <mark>13. Input Devices</mark>, <mark>14. Molding and Casting</mark>,
+    "15. Networking and Communications", "16. Interface and Application", <mark>17. Wildcard Week</mark>, <mark>18. System Integration</mark>, <mark>19. Applications and Implications</mark>, <mark>20. IP and Income</mark>];
     const { handleButtonClick } = useSection();
 
     // Select a random wallpaper
-    const wallpapers = ["am", "thesmile", "radiohead", "tlsp"];
+    const wallpapers = ["am", "thesmile", "radiohead", "tlsp", "stones", "alex", "kendrick","jm"];
     const randomIndex = Math.floor(Math.random() * wallpapers.length);
     const randomWallpaper = "./assets/wall/" + wallpapers[randomIndex] + ".png";
     
@@ -78,6 +78,12 @@ export default function DFab({currentSection}){
                         <DFHomeButton img="./assets/df/18/thumb.png" 
                         text={dfa_headlines[15]} 
                         currentSection={dfa_sections[15]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/19/thumb.png" 
+                        text={dfa_headlines[16]} 
+                        currentSection={dfa_sections[16]} handleButtonClick={handleButtonClick}/>
+                        <DFHomeButton img="./assets/df/20/thumb.png" 
+                        text={dfa_headlines[17]} 
+                        currentSection={dfa_sections[17]} handleButtonClick={handleButtonClick}/>
                     </div>
                     
                 </div>
@@ -227,6 +233,7 @@ export default function DFab({currentSection}){
                         Power handling
                         <ImgModal img="./assets/df/final/img15.png"/>
                     </p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/nzDqvxiEZ4k" title="That was a problem for future me and now I am future me" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     <h4>Breaking into modules</h4>
                     <p>
                         Traditionally (yes I use traditionally a lot), at least with analog pedals I've built, it's a single PCB that contains most of the components of the pedal, conveniently with the pots are mounted on the backplate of the PCB. Keith essentially did the same with his Daisy Seed project, but I wanted to improve upon the design and make it modular, breaking the interface and peripheral
@@ -666,7 +673,41 @@ export default function DFab({currentSection}){
                 <div className="week8 df-docs">
                     <h1>Embedded Programming</h1>
                     <img src="./assets/df/8/thumb.png" className="df-thumb"/>
-                    <h2>Plan</h2>
+                    <h2>Pssshhew...</h2>
+                    <p>
+                        I have a vision. A Star Wars vision. Imagine this, when the Sith infiltrated the the government, what are their greatest fears? The Jedi and being exposed, preferably being exposed by the Jedi. Now for the Jedi, how do you expose an infiltrated Sith? Intimidation, not in plain sight, no that's not the Jedi way. How do you intimidate subtly? My vision! Imagine, walking into the bathroom, stand next to a Sith and unzip. 
+                        "Pssshhew" the sound of a lightsaber igniting, with glowing rays of kyber crystal below your waist. The Sith would be terrified, they'd be exposed, they'd be defeated. That's my vision, that's my project, I want to attach a "lightsaber" to the zipper of my pants and use machine learning on an IMU to detect the zipper's movement and ignite the saber.
+                        <ImgModal img="./assets/df/8/saber.png"/>
+                        Some of you might saw the thumbnail and thought what's Darth Maul doing here in a Jedi invention? Well, that's just a metaphor of me having a double-bladed lightsaber as in reality, I have two penises.
+                    </p>
+                    <h2>Kyber crystal</h2>
+                    <p>
+                        The heart of my lightsaber features a XIAO nrf52840 Sense, as it has a built-in IMU and Seeeduino did a great job of documenting <a href="https://wiki.seeedstudio.com/XIAOEI/">ultilizing it with EdgeImpulse</a>.
+                        <ImgModal img="./assets/df/8/img1.png"/>
+                        Following the guide, I started with installing the EdgeImpulse CLI and created a new project.
+                    </p>
+                    <h3>Data Acquisition</h3>
+                    <p>
+                        In this step I tried to collect the "Accelerometer data" from the Seeed Studio XIAO nRF52840 Sense onboard IMU by uploading the EdgeImpulse custom firmware to access the IMU and capture the data. To connect the XIAO to EdgeImpulse platporm, I installed the EdgeImpulse CLI, select my project and device and run the command to upload the data.
+                        I then spent 20 minutes of pulling my zipper up and down, for science. Due to having variaties in trousers and jeans, I diversified the training data by acquiring data from my top 3 pairs of pants. Please excuse the sensitive science video below.
+                    </p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/8/zip.mp4'} type="video/mp4" controls/>
+                    <p>
+                        With data acquired, I then process the training data by splitting the data and labeling them as 'up' 'down' and 'idle'. This process is crazy long and in the end, my dataset resulted in ~220 samples.
+                        <ImgModal img="./assets/df/8/img2.png"/>
+                    </p>
+                    <h3>Training the model</h3>
+                    <p>
+                        I wish I could tell you more about this process, but in reality, I just followed the guide, clicked the 'Start training' button and waited for 10ish minutes. The training output showed a 86.2% accuracy, which isn't perfect, but it's good enough for my project. In fact, this is not my first attempt at training the model. My previous attempt was resulted in ~70% accuracy that no matter how I optimized the training parameters, it just fucked up the classification,
+                        even for idling sample, which is wild, considering their contrast to moving sample. I later based on the inaccuracy of idling samples, made a theory of flawed dataset which I split the sample with too much zero padding that dilute the accuracy, hence I manually process 220 samples again, cropping only to their meaningful values. My hard work had certainly paid off here.
+                        <ImgModal img="./assets/df/8/img3.png"/>
+                    </p>
+                    <h3>Deploying trained model to Arduino</h3>
+                    <p>
+                        After having the trained model, EdgeImpulse deployed it into an Arduino library where I can download and use the model. Seeeduino provided a very good Arduino template that basically access the library and calculate the classification for me. I modified the template to my 3 labels and run the <a href="./assets/df/8/XIAOEI.ino">program</a>.<br/>
+                        So, how well did it work? Not good, not as good as theoretical accuracy. For idling, it's perfect; for up and down, hit or miss. The problem I noticed was that the IMU samples data every 0.5s with sample length of 1s. When I pull my zipper matching the sampling timing, it has higher success rate than zipping too slow or to fast. I tried to optimize the sampling rate and sample length, but it didn't improve the classification. All and all, it has potential and worked a few times.
+                        The problem is, in practice, there's unwanted noise and the model is not robust enough to classify the noise as noise. That translates to if I stand up or just walk around, the thing hanging below my waist might light up and play a funky sound. I realized how motion detection is kinda an idiotic way of turning something on or off, I could have just used a button, that's kinda what the Jedi used also, no one wiggle their wrist to ignite a lightsaber.
+                    </p>
                 </div>
             )}
 
@@ -675,25 +716,94 @@ export default function DFab({currentSection}){
                     <h1>Computer Controlled Machining</h1>
                     <img src="./assets/df/9/thumb.png" className="df-thumb"/>
                     <h2>Plan</h2>
-
+                    <p>
+                        <ImgModal img="./assets/df/9/img0.png"/>
+                        <ImgModal img="./assets/df/9/img1.png"/>
+                        <ImgModal img="./assets/df/9/img2.png"/>
+                        <ImgModal img="./assets/df/9/img3.png"/>
+                        <ImgModal img="./assets/df/9/img4.png"/>
+                        <ImgModal img="./assets/df/9/img5.png"/>
+                    </p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/9/Cncut.mp4'} type="video/mp4" controls/>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/-lrCM8jCRdI" title="Recontech 1312 CNC Introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
             )}
 
             {(currentSection === 'week10') && (
                 <div className="week10 df-docs">
-                    <h1>Electronics Design</h1>
+                    <h1>10. Electronics Design</h1>
                     <img src="./assets/df/10/thumb.png" className="df-thumb"/>
-                    <h2>Plan</h2>
-
-                </div>
-            )}
-
-            {(currentSection === 'week11') && (
-                <div className="week11 df-docs">
-                    <h1>Output Devices</h1>
-                    <img src="./assets/df/11/thumb.png" className="df-thumb"/>
-                    <h2>Plan</h2>
+                    <h2>Keeping it simple!</h2>
+                    <p>
+                        Being a wannabe engineer and a budget audiophile, the ability to quickly design and produce PCBs is a dream come true, a dream that I did not appriciate enough on my first fab run. With an unhealthy amount of internet and a learning mindset, coming to this week assignment, I've prepared for myself a list of projects that is definitely affecting my ADHD, so let's keep it simple, shall we?<br/>
+                        For the assignment, I decided to make a dead simple non-RGB LED ring with an encoder, accessing the LEDs with multiplexing via the XIAO's digital IO. The design is simple, the code is simple, the assembly is simple, and the result is simple.
+                    </p>
+                    <h3>Design</h3>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/10/Elecdes1.mp4'} type="video/mp4" controls loop muted/>
+                    <p>
+                        In the video above, I added 12 LEDs and used the <a href="https://github.com/MitjaNemec/PlaceFootprints">Place Footprints</a> plugin to place the LEDs in a good circular position. By default, the footprints are place horizontally, which I selected all, rotated 90 degrees, reapplied the plugin to reduce the ring diameter to save space.
+                        <ImgModal img="./assets/df/10/img1.png"/>
+                        Since this is a proof of concept, I wanted to recreate an example on a Focusrite interface with a segmented ring. 12 LEDs was planned to reduce 1/4 of the ring to 3 segments and so I deleted 1 row of LEDs in my schematic.
+                        <ImgModal img="./assets/df/10/img2.png"/>
+                        <ImgModal img="./assets/df/10/img3.png"/>
+                        After putting the components in the edge cut boundary, I used the plugin <a href="https://github.com/freerouting/freerouting/tree/master/integrations/KiCad">Freerouting</a> to route the traces. While I normally route the traces manually, I wanted to try the plugin to see how it works and its potential of scaling up for more LEDs that complexify the design.
+                        The plugin worked okay...? with the constraint of 1 layer, it only left 1 rogue connection that required vias to fix. While that's acceptable, another thing being bothering to me was seeing some funky traces that I retraced manually. In the case of scaling up and hypothetically having 2 layers, with my chronic lazy condition, I'd probably use the plugin again.
+                    </p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/10/Elecdes2.mp4'} type="video/mp4" controls loop muted/>
+                    <p>
+                        <ImgModal img="./assets/df/10/img4.png"/>
+                        <ImgModal img="./assets/df/10/img5.png"/>
+                    </p>
+                    <h3>Code</h3>
+                    <p>
+                        I demonstrated LED multiplexing in the video below by connecting the LEDs to the XIAO's digital IO, by outputing HIGH or LOW to the pin, I essentially having 1 pin as 3.3V and the other as GND; since diode only allows current to flow in one direction, settign cathode pins to LOW would allow lighting up and HIGH would block the current, turning off the LEDs.
+                        <ImgModal img="./assets/df/10/img6.png"/>
+                    </p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/10/vid1.mp4'} type="video/mp4" controls loop muted/>
+                    <p>
+                        I then write a simple code to take encoder input and lightup the LED accordingly. Realistically, driving the LED with a whole RP2040 like this makes no sense, once more code is added to the microcontroller, it'll change the timing and make life difficult. In practice, that's where dedicated LED multiplexer/drivers come in.
+                    </p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/10/vid2.mp4'} type="video/mp4" controls loop muted/>
+                    <p>You can find the code <a href="./assets/df/10/lightring.ino">here</a></p>
                     
+
+                    <h1>11. Output Devices</h1>
+                    <img src="./assets/df/11/thumb.png" className="df-thumb"/>
+                    <h2>DAC - D for Panic, A for Panic, C for Panic</h2>
+                    <p>
+                        Frankenstein over here is a creation of pure panic, designed to conquest both input and output assignment in the last minute of finding what ever module available in little fun boxes.
+                        <ImgModal img="./assets/df/11/img1.png"/>
+                        <ImgModal img="./assets/df/11/img2.png"/>
+                        I found a MCP4725 DAC module so that where we're starting. The DAC module is a 12-bit DAC with I2C interface, features 6 pins including 4 of I2C and 2 for audio output. Using the Wire.h library and a predefined wave look up table, I can output the wave with a loop looks something like this:
+                        <ImgModal img="./assets/df/11/img3.png"/>
+                        With the DAC outputting the wave, I tried to use the XIAO to generate different waveform (sine, triangle, sawtooth, square) to make a simple synthesizer, but got a major setback of the DAC module for some reason only output sawtooth wave, regardless of any content I generated. I tried to troubleshoot and tried various libraries but to no avail, so I decided to give up and move on to work on an I2C OLED display module.
+                        However, while interfacing the OLED, I scanned the I2C address and found that I used the wrong address for the DAC (0x60 instead of 0x62), so I quickly fixed the address and tried to output the wave again and while there were results, my waveform generation code did not play well with the DAC, but with the simple wave look up table, the output was fine.
+                        <ImgModal img="./assets/df/11/img4.png"/>
+                        <ImgModal img="./assets/df/11/img5.png"/>
+                    </p>
+
+                    <h1>13. Input Devices</h1>
+                    <img src="./assets/df/13/thumb.png" className="df-thumb"/>
+                    <h2>Revisiting ST25DV dynamic NFC tags</h2>
+                    <p>
+                        In the stack of panic, I also found an analog accelerometer - the SparkFun ADXL335 breakout. I don't have plans to work on any motion/gesture sensing project and only wanted to see how the accelerometer works but the module was so straightforward to use that the only meaningful writeup I can think of is to work on an signal processing algorithm and I don't want to do that.
+                        <ImgModal img="./assets/df/13/img1.png"/>
+                        If you recall from last year, I had an idea involving a dynamic NFC tag and I spent a lot of time trying to interface the module just to realize the official library hasn't implemented readingText yet so I spent 5 days writing my own additional API. Ah, glory days. A year has passed and last time I tried to use the tag, I learned that they rewrote the library to version 2.x and completely changed some API, so my previous code went obsolete.
+                        Now is the perfect time to revisit.<br/>
+                        I started off by connecting to the module via Qwiic connector and install the ST25DV library from STM32. I used Wire.h to quickly get the I2C pins, then I initiated the library and started on the example URI code. I remixed the code with the help of ChatGPT to put read/write URI in a loop, as demonstrated below:
+                    </p>
+                    <video width="560" src={process.env.PUBLIC_URL + '/assets/df/13/vid1.mp4'} type="video/mp4" controls loop muted/>
+                    <p>
+                        Technically, the program only read URIs, but write URLs as I defaulted the protocol to URI_ID_0x01_STRING which translated to "http://www.\0". The list of protocols are part of NDEF standard included in the library and can be glanced at <a href="https://os.mbed.com/teams/ST-Americas-mbed-Team/code/lib_NFC_NDEF/docs/tip/lib__NDEF_8h_source.html">here</a>. I could have probably written a protocol selection menu, but....no. Not doing that.<br/>
+                        Doing some detective work on the src, I didn't find any significant changes from my memory, so I returned to my last documentation to recall what I did. Turned out, it wasn't as glory as I thought. Other than a few additions of quick access to SMS, Email and GEO (very interesting), the main focus in reading/writing URIs remained unchanged.
+                    </p>
+                    <h3>Reliving the not-so-glory moment</h3>
+                    <p>
+                        <ImgModal img="./assets/df/13/trace.png"/>
+                        <ImgModal img="./assets/df/13/out.png"/>
+                        I spent last year assignment ranting and trying to figure out how to read/write Text to the tag and glanced over the fact that Text was a protocol of URI - I literally just read the whole table of URI definitions in the NDEF lib <a href="https://os.mbed.com/teams/ST-Americas-mbed-Team/code/lib_NFC_NDEF/docs/tip/lib__NDEF_8h_source.html">right here</a> - and the question's answered: last year, I could have just changed 1 string of protocol to text and the function of read/writeURI would have worked.
+                        Instead, I misunderstood NDEF and went the longer route of extracting the protocol manually via the NDEF library. While essentially the result was similar to shortcuts of SMS/Email/..., I wasted my time for doing but not learning useful information from the beginning. I'm not mad, I'm just disappointed.
+                    </p>
                 </div>
             )}
 
@@ -701,15 +811,6 @@ export default function DFab({currentSection}){
                 <div className="week12 df-docs">
                     <h1>Midterm</h1>
                     <ImgModal img="./assets/df/12/thumb.gif"/>
-                </div>
-            )}
-
-            {(currentSection === 'week13') && (
-                <div className="week13 df-docs">
-                    <h1>Input Devices</h1>
-                    <img src="./assets/df/13/thumb.png" className="df-thumb"/>
-                    <h2>Plan</h2>
-
                 </div>
             )}
 
@@ -788,6 +889,17 @@ export default function DFab({currentSection}){
                         After we have our silicone mold, we repeat the same process with the liquid plastic. For a 2 sided plastic mold, after filling 2 parts of the mold, we let the plastic cured for half the cured time, then we close the mold and let it cure for the rest of the time with a weight placed on top to tighly shut.
                     </p>
                     <video width="560" src={process.env.PUBLIC_URL + '/assets/df/14/Vid5.mp4'} type="video/mp4" controls muted/>
+                    <h2>So-Lo Han <small><small><small>(lol)</small></small></small></h2>
+                    <ImgModal img="./assets/df/14/solohan.png"/>
+                    <p>
+                        Apologize for any anticipation of a Han Solo cameo here, my thumbnail is purely a clickbait; not by design, at lease not initially. You see, I had fabricator's block (as always) in such last week of DFII and was struggling to either find an use for casting - effectively cloning identical parts or find creative expression in molding - creating unique parts.<br/>
+                        Now I've missed the opportunity to mold meaningfully, but let's see what idea I came up with.
+                        <ul>
+                            <li>Custom IEMs (plastic)</li>
+                            <li>Notebook stamp (silicone/optimally rubber)</li>
+                            <li>Ear/Pinna (silicone)</li>
+                        </ul>
+                    </p>
                 </div>
             )}
 
@@ -838,36 +950,91 @@ export default function DFab({currentSection}){
                     <h2>PCB Design</h2>
                     <h3>Components/Footprint selection</h3>
                     <p>
+                        Preparing for the PCB design, I put together a spreadsheet of components and head to LCSC to find and select their footprints. Actually, this isn't totally true. Before getting the footprints, I needed the symbols first, so any symbols not available in KiCAD's library,
+                        I head over to LCSC to get its symbol and footprint, by ultilizing a python script that scrape EasyEDA's library and convert it to KiCAD's format. So technically, I did 2-in-1 and only make the spreadsheet after I got all the symbols and footprints.<br/>
                         <ImgModal img="./assets/df/18/img1.png"/>
                     </p>
                     <h4>Custom footprint for potentiometer</h4>
+                    <p>
+                        I used 3 concentric potentiometers for the project, and while the symbol was available in KiCAD's library, the footprint was not. I made a custom footprint for the potentiometer accordingly to the datasheet and uh... that's it.
+                        <ImgModal img="./assets/df/18/pot.png"/>
+                    </p>
                     <h3>PCB Manufacturing preperation</h3>
                     <p>
+                        Sitting back and writing this after getting the project done, I had to relive some stupid decisions I made (for the record, I think I overdosed on caffein that day). The image is self-explanatory, I followed the process from placing components, trace them front and back then fill the zones. 
                         <ImgModal img="./assets/df/18/img2.png"/>
                         <ImgModal img="./assets/df/18/img3.png"/>
+                        What I'm not satisfied about now is circled below: I was too used to designing 1-sided PCB that when placing the components (3 connectors to the interface modules) on the Back layer, I went autopilot and conveniently placed them in the blank space of the Front layer, which looks nice in 2D viewing, 
+                        but generated issues that I had to ultilize some of my infamous shenanigans while assembling. 
+                        <ImgModal img="./assets/df/18/edit.png"/>
+                        Ironically, my main display of System Integration features my inability and oversight in system integration. Ideally and for iteration 2, I'd place all the connectors closer to the edge in a column. And select a smaller connector; the ready JST connector is really oversized.
                         <ImgModal img="./assets/df/18/dfront.png"/>
                         <ImgModal img="./assets/df/18/dback.png"/>
                     </p>
                     <h3>PCB Ordering and pricing</h3>
+                    <p>
+                        With the prepared Gerber files, I went on the quest of ordering PCB and listed here 3 options for anyone who's interested in making their own PCBs.
+                    </p>
                     <h4>JLCPCB (board and stencil)</h4>
                     <p>
+                        JLCPCB offers dirt cheap PCB and stencil service that are high quality and hard to beat. While I've used JLC previously and was satisfied with the result, in this instance of ordering, I was set off by the ********* shipping fee that to have the PCB in around 1 week, I had to pay 3 times the price of the PCB itself. And that was challenging my inner Asian mom energy, not a good deal.
                         <ImgModal img="./assets/df/18/img4.png"/>
                         <ImgModal img="./assets/df/18/img5.png"/>
+                        PCB + stencil: $10.63<br/>
+                        Shipping + tax: $25 + $8.6<br/>
+                        <b>Total:</b> ~$44.3<br/>
                     </p>
                     <h4>JLCPCB (preassembled)</h4>
                     <p>
+                        For my initial plan and for the sake of convenience, I wanted to have JLC assemble the PCB for me, that was my reasoning to design in small SMD components. Well it did not go as planned, as it racked up the price by $50 which is absurd to pay since components alone, it's less than $14 for everything.
                         <ImgModal img="./assets/df/18/img6.png"/>
+                        Looking at the calculated invoice, while I can ignore stencil and setup fee of $10 and some minor fees, the eye catcher here is the Extended components fee of $20. I guessed the extended type here might be related to their pick and place machine and how they takes additional steps for some components, but in the same type of footprint, some are extended and some are not, which is confusing and I cannot find a pattern or an explaination.
                         <ImgModal img="./assets/df/18/img7.png"/>
                         <ImgModal img="./assets/df/18/img8.png"/>
+                        Assembled: $51.7<br/>
+                        Shipping + tax: $22.3 + $17.8<br/>
+                        <b>Total:</b> ~$92<br/>
                     </p>
                     <h4>My choice: PCBWay (board) + LCSC (components)</h4>
                     <p>
+                        If you aren't familiar with PCBWay, you don't really need to be. Just know a fun fact that PCBWay is the <b><a href="https://www.kicad.org/sponsors/sponsors/">Platinum sponsor</a></b> of KiCAD.<br/>
+                        While their PCB and stencil price is slightly more expensive than JLC (15>10), the shipping fee of Global Direct promised a 6-10 days delivery for $6 is a fucking deal. For some reason, with more expensive priced manufaturing combine with shipping and tax, PCBWay is still $20 cheaper than JLC.
                         <ImgModal img="./assets/df/18/img10.png"/>
                         <ImgModal img="./assets/df/18/img9.png"/>
+                        Now some keen eyes might saw LCSC order below and thought to oneself why I didn't try ordering preassembled PCB from PCBWay. My answer is time constraint, I couldn't export positioning file correctly in the previews and knew it would spawn more delays compared to just assemble the board myself.<br/>
+                        The order from LCSC is priced as expected, $15 of enough components for 2 boards and a hefty shipping fare of $21.5. 
                         <ImgModal img="./assets/df/18/img11.png"/>
+                        PCBWay: $29.5<br/>
+                        LCSC: $36.7<br/>
+                        <b>Total:</b> ~$66<br/>
+                        Fascinatingly while I paid for 2 different shipping tags, since ordering PCB and stencil alone from PCBWay is $20 cheaper than JLCPCB, and saving another 20 from LCSC for not assembling, In the end I saved $25 comparing to JLCPCB's preassembled service or $15 comparing to individual JLC's PCB and stencils. Which I spent on KFC. What a deal!
+                        <ImgModal img="./assets/df/18/kfc.png"/>
                     </p>
                     <h3>3D Model</h3>
-                    <h3>Enclosure</h3>
+                    <p>
+                        I did not prepare a mockup model for the final project, as a) Generating 3D model for the PCB, connectors and components takes alot of time that I couldn't afford, b) I didn't creatively design the enclosure from scratch but to use off-the-shelf aluminum enclosure that came with certain constraints, with the addition of the shenanigans mentioned above, the only rational method I performed was to suck it and see.
+                        <ImgModal img="./assets/df/18/suckit.png"/>
+                    </p>
+                </div>
+            )}
+
+            {(currentSection === 'week19') && (
+                <div className="week19 df-docs">
+                    <h1>Applications and Implications</h1>
+                    <img src="./assets/df/19/thumb.png" className="df-thumb"/>
+                    <h2>Plan</h2>
+                    <p>
+                        
+                    </p>
+                </div>
+            )}
+
+            {(currentSection === 'week20') && (
+                <div className="week20 df-docs">
+                    <h1>IP and Income</h1>
+                    <img src="./assets/df/20/thumb.png" className="df-thumb"/>
+                    <h2>Plan</h2>
+                    
                 </div>
             )}
 

@@ -9,10 +9,10 @@ export default function NavigateBar(){
     const of_sections = ["home", "notifications", "messages", "profile"];
     const df_sections = ["df-home", "df-profile", "df-final"];
 
-    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week11", "week12", "week13", "week14", "week15", "week16", "week17", "week18"];
+    const dfa_sections = ["week123", "week4", "week5", "week6", "week7", "week8", "week9", "week10", "week10", "week12", "week10", "week14", "week15", "week16", "week17", "week18", "week19", "week20"];
     const dfa_headlines = ["1.2.3. Documentation & VCS", "4. CAD", "5. CCC", "6. Electronics Production", "7. 3D Printing",
     "8. Embedded Programming", "9. CNC", "10. Electronics Design", "11. Output Devices", "12. Midterm", "13. Input Devices", "14. Molding and Casting",
-    "15. Networking and Communications", "16. Interface and Application", "17. Wildcard Week", "18. System Integration"];
+    "15. Networking and Communications", "16. Interface and Application", "17. Wildcard Week", "18. System Integration", "19. Applications and Implications", "20. IP and Income"];
     
     return(
         <header>
@@ -50,7 +50,7 @@ export default function NavigateBar(){
                 headlines={dfa_headlines} sections={dfa_sections} handleButtonClick={handleButtonClick}/>
 
                 <NavButton img="./assets/svg/hammer.svg" 
-                text="Final project" 
+                text="Final project"
                 currentSection="df-final" handleButtonClick={handleButtonClick}/>
                 <NavButton img="./assets/svg/user.svg" 
                 text="About me" 
